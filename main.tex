@@ -1,0 +1,1771 @@
+\documentclass[titlepage]{book}
+
+% PACKAGES
+
+\usepackage[fontsize=13pt]{fontsize}
+\usepackage{afterpage}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{chngcntr}
+%\usepackage{blindtext}
+\usepackage[labelsep=space]{caption}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[bottom=6.5em]{geometry}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage[hyperfootnotes=false,linktoc=page,pdfpagelayout=TwoPageRight]{hyperref}
+\usepackage{lettrine}
+\usepackage{cfr-lm}
+\usepackage{makecell}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage[defaultlines=4,all]{nowidow}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{wrapfig}
+%\usepackage{lipsum}
+\usepackage[spanish]{babel}
+\usepackage{float}
+\usepackage{xcolor,lipsum}
+\usepackage{tcolorbox}
+\input{math_preamble}
+\usepackage{caption}
+\usepackage{cancel}
+
+\captionsetup[figure]{font=footnotesize,labelfont=footnotesize}
+% PAGE HEADERS
+
+\let\Sectionmark\sectionmark
+\def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
+
+\let\Subsectionmark\subsectionmark
+\def\subsectionmark#1{\def\Subsectionname{#1}\Subsectionmark{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\thepage}
+\fancyhead[RE]{\Sectionname}
+\fancyhead[LO]{\MakeUppercase{\Subsectionname}}
+\fancyhead[RO]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% GRAPHICS
+
+\graphicspath{ {./images/} }
+
+% SECTION FORMAT
+
+\counterwithout{subsection}{section}
+
+\renewcommand{\thesection}{PARTE  \Roman{section}}
+\renewcommand{\thesubsection}{\Roman{subsection}}
+\renewcommand{\thesubsubsection}{\Roman{subsubsection}}
+
+\newcommand{\subsectionbreak}{\newpage}
+
+\titleformat{\section}[display]{\Large\bfseries\filcenter}{\thesection}{.5em}{}
+\titleformat{\subsection}[display]{\large\bfseries\filcenter}{\thesubsection}{0em}{\uppercase}
+
+\counterwithin*{footnote}{page}
+
+% FIGURES
+
+\renewcommand{\thefigure}{\roman{figure}}
+
+\renewcommand{\figurename}{\textsc{Fig.}}
+
+\newcommand{\fig}[3]{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\linewidth]{#1}
+        \textbf{\caption{#2}}
+        \label{fig:#3}
+    \end{figure}
+}
+
+% EQUATIONS
+
+%\newcommand{\eq}[1]{
+%    \begin{equation*}
+%    \begin{split}
+%        #1
+%    \end{split}
+%    \end{equation*}
+%}
+
+\newcommand{\eqnum}[1]{
+    \begin{equation}
+    \begin{split}
+        #1
+    \end{split}
+    \end{equation}
+}
+
+% OLDSTYLENUMS
+
+%\DeclareMathSymbol{0}{\mathalpha}{letters}{`0}
+%\DeclareMathSymbol{1}{\mathalpha}{letters}{`1}
+%\DeclareMathSymbol{2}{\mathalpha}{letters}{`2}
+%\DeclareMathSymbol{3}{\mathalpha}{letters}{`3}
+%\DeclareMathSymbol{4}{\mathalpha}{letters}{`4}
+%\DeclareMathSymbol{5}{\mathalpha}{letters}{`5}
+%\DeclareMathSymbol{6}{\mathalpha}{letters}{`6}
+%\DeclareMathSymbol{7}{\mathalpha}{letters}{`7}
+%\DeclareMathSymbol{8}{\mathalpha}{letters}{`8}
+%\DeclareMathSymbol{9}{\mathalpha}{letters}{`9}
+
+% REFERENCES
+
+\hypersetup{
+    colorlinks=false,
+    linkbordercolor={0 0 0},
+    pdfborderstyle={/S/U/W 0.0}
+}
+
+\newcommand{\secref}[1]{\hyperref[sec:#1]{Section #1}}
+
+\newcommand{\figref}[1]{\hyperref[fig:#1]{Fig. #1}}
+
+% LARGE FIRST LETTER OF SECTION
+
+\newcommand{\firstword}[2]{
+    \lettrine[lines=3,nindent=0em,findent=0.5em,realheight]{#1}{#2}
+}
+
+% TABLE OF CONTENTS FORMAT
+
+\renewcommand{\contentsname}{CONTENTS}
+\renewcommand{\cfttoctitlefont}{\hfil\bfseries\fontsize{15pt}{0pt}\selectfont}
+\renewcommand{\cftaftertoctitleskip}{0.5\baselineskip}
+\renewcommand{\cftsecfont}{\bfseries}
+
+\addtolength{\cftsecnumwidth}{40pt}
+\addtolength{\cftsubsecnumwidth}{10pt}
+\setlength{\cftbeforetoctitleskip}{-3em}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+% TITLE SETUP
+
+\title{\textbf{\huge{Física}\\\Large{Matias Schneiter}}}
+
+%\author{
+%    Secondary Author
+%    \and
+%    Tertiary Author
+%}
+
+\date{}
+
+% MISC
+
+\newcommand{\aether}[0]{\ae ther}
+
+%\newcommand{\letlist}[1]{
+%    \begin{enumerate}[label=(\emph{\alph*})]
+%        #1
+%    \end{enumerate}
+%}
+
+% DOCUMENT
+
+\begin{document}
+
+% TITLE
+
+\maketitle
+
+% PREFACE
+
+\begin{center}
+    \textbf{\Large{PREFACIO}}
+\end{center}
+
+\firstword{L}{a} física abarca muchos aspectos de la vida, por no decir todos. A lo largo de curso intentaremos introducirnos en los aspectos mas importantes de la materia. A veces, el saber el origen de las palabras nos permite armar una idea del sentido de las mismas. La palabra \textbf{Física} viene de una palabra del griego que significa \textbf{Estudio de la Naturaleza}.  
+
+\vspace{\baselineskip}
+
+%\textit{Some Left Text, (Maybe a Date)} \hfill PREFACE AUTHOR
+
+% TABLE OF CONTENTS
+
+\pagenumbering{gobble}
+\pagestyle{empty}
+\newgeometry{bottom=6em}
+    \renewcommand{\baselinestretch}{0.94}\normalsize
+            \tableofcontents
+    \renewcommand{\baselinestretch}{1.0}\normalsize
+\restoregeometry
+\pagestyle{fancy}
+
+\clearpage
+
+% CONTENTS
+
+\pagenumbering{arabic}
+\section{Conocimientos previos}
+
+\subsection{Unidades de medición y prefijos}
+Una forma de representar valores grandes y chicos implica agrandar o disminuir un número y reemplazarlo con prefijos como los mostrados en la tabla \ref{tab:prefijos}. Muchos prefijos se utilizan de manera cotidiana como el kilo (\textbf{k}) que significa $1000$, y mili (\textbf{m}), que significa $0,001$. Es decir, $1$km = $1000\text{m}$, o $10^{3}$m. Por otro lado, $1\text{mm}=0,001\text{m}$ o $10^{-3}\text{m}$. \textbf{Es importante sentirse habituado a cualquiera de estas formas de expresar números grandes o chicos}. 
+
+En la física se utiliza una larga lista de prefijos. Sus nombres y significados se muestran en la tabla \ref{tab:prefijos}. 
+Para utilizarlos primero se escribe el número o medida en forma de potencia en base diez que corresponde a un prefijo. Por ejemplo, la distancia media al Sol es $1,50\cdot 10^{11}\text{m}$. Esto se puede escribir como $0,150\cdot 10{12}\text{m}$ o $150\cdot 10^{9}\text{m}$, es decir, $0,150\text{Tm}$ o $150\text{Gm}$, respectivamente.
+Como ejemplo de número chico tenemos el ejemplo del diámetro atómico del hidrógeno, el cual es $1,1\cdot 10^{-10}\text{m}=0,11\cdot 10^{-9}\text{m}=11\text{nm}$. 
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c}
+        Potencia de base 10 & Nombre & Prefijo\\
+        $10^{24}$  &yota & Y\\
+        $10^{21}$  &zeta &Z \\
+        $10^{18}$  &exa & E\\
+        $10^{15}$  &peta & P\\
+        $10^{12}$  &tera & T \\
+        $10^{9}$   &giga & G \\
+        $10^{6}$   &mega & M\\
+        $10^{3}$   &kilo & k\\
+        $10^{-3}$  &mili & m \\
+        $10^{-6}$  &micro &$\mu$ \\
+        $10^{-9}$  &nano &n \\
+        $10^{-12}$ &piko &p \\
+        $10^{-15}$ &femto &f \\
+        $10^{-18}$ &ato & a \\
+        $10^{-21}$ &zepto &z \\
+        $10^{-24}$ &yokto & y        
+    \end{tabular}
+    \caption{}
+    \label{tab:prefijos}
+\end{table}
+
+Ademas de los prefijos mostrados en la tabla existen otros que son menos usuales, tales como hecto $\text{h}=100$, deca $\text{da}=10$, deci $\text{d}=0,1$ y  centi $\text{c}=0,01$. 
+
+En definitiva, cifras grandes  y chicas se expresan a veces con \textbf{prefijos} y otras veces en forma de \textbf{potencia de base diez}. Los cálculos en general se simplifican si uno traduce de prefijo a potencia de base diez. El resultado de las cuentas o mediciones se suelen expresar con ayuda de los prefijos. Esto último lo ilustramos con un ejemplo para que quede mas claro:
+\\[12pt]
+\textbf{Ejemplo:}
+
+\begin{itemize}
+    \item ¿Que distancia recorre la luz en $0,1$ms si esta tiene una velocidad de $300$Mm/s?
+\end{itemize}
+
+\textbf{Respuesta:}
+Primero escribimos las cantidades en forma de potencia de base diez de la siguiente manera:
+\[0,1\text{ms} = 0,1\cdot 10^{-3}\text{s}\] y
+\[300\text{Mm/s}=300\cdot 10^{6}\text{m/s}\]
+
+\[\text{distancia} = \text{rapidez} \cdot \text{tiempo} = 300 \cdot 10^{6} \frac{\text{m}}{\cancel{s}} \cdot 0,1\cdot 10^{-3}\cancel{s} = 30\cdot 10^{6-3}\text{m}= 30\cdot 10^{3}\text{m} \]
+En la respuesta reemplazamos $10^{3}$ por el prefijo \textbf{k} (ver lista de prefijos en la tabla \ref{tab:prefijos}) y la expresamos de la siguiente manera:
+\\[12pt]
+\fbox{La luz se desplaza $30$km en el tiempo dado.}
+
+
+
+\begin{tcolorbox}[colframe=gray, colback=white, coltitle=white, sharp corners, title=Problema para estudiar]
+\begin{enumerate}
+    \item[a)] Escribe $0,000\,000\,0375$ en forma de potencia de base diez.
+    \item[b)] Escribe la distancia $3,80\cdot 10^{8}$m con la ayuda de los prefijos.
+    \item[c)] Escribe $48\micro$s en forma de potencia de base diez.
+    \item[d)] Asume que el universo tiene 15 mil millones de años. Calcula la edad del universo expresada en segundos.    
+\end{enumerate}
+Respuestas:
+\begin{enumerate}
+    \item[a)] $3,75\cdot 10^8$m
+    \item[b)] $380$Mm o $0,380$Gm
+    \item[c)] $4,8\cdot 10^{-5}$s
+    \item[d)] $4,7 \cdot 10^{17}$s o $0,47$Es    
+\end{enumerate}
+
+\end{tcolorbox}
+\newpage
+\subsubsection{Problemas}
+\begin{enumerate}
+    \item Reescribe las siguientes cantidades con ayuda de prefijos adecuados
+    \begin{enumerate}
+        \item $3.5 \cdot 10^2$m
+        \item $8.1 \cdot 10^{-10}$m
+        \item $0.00036$g
+        \item $15 \cdot 10^3$km
+        \item $5.8 \cdot 10^3$kg
+        \item $5.8 \cdot 10^4$kg
+    \end{enumerate}
+    \item Las siguientes longitudes se deben escribir en unidades de metros (m) sin prefijo y con ayuda de la notación científica
+    \begin{enumerate}
+        \item $0.032$m
+        \item $58$km
+        \item $0.36$mm
+        \item $637$Mm
+        \item $458$nm
+        \item $3.8 \cdot 10^{5}$km
+    \end{enumerate}
+    \item Expresa las siguientes áreas en unidades de $m^2$. Utiliza notación científica
+    \begin{enumerate}
+        \item $42$cm$^{2}$
+        \item $1.3$mm$^{2}$
+        \item $7.26$km$^{2}$
+    \end{enumerate}
+    \item Calcula la edad del Universo y expresala en unidades de días (d). Utiliza notación científica.
+    \item Un pulso de rada se envía hacia la Luna desde la Tierra. Esta señal regresa en forma de eco después de $2.42$s. La rapidez del pulso del radar es $0.300$Gm/s.
+    \begin{enumerate}
+        \item ¿cuanto tardo el pulso en llegar a la Luna?
+        \item Calcula la distancia a la luna.
+    \end{enumerate}
+    \item El corazón humano late $72$ veces por minuto. Calcula el orden de magnitud de los latidos a lo largo de una vida humana. 
+    \item La hoja de papel A4 pesa $5.0$g. El volumen de la hoja es $6,8$cm$^3$. Calcula la densidad del papel. 
+    \item La masa de la Tierra es $5.98 \cdot 10^24$kg. La Tierra se puede pensar como una esfera de radio $6.37$Mm. Calcula la densidad media de la Tierra. 
+\end{enumerate}
+\subsubsection{Algunas soluciones}
+
+\begin{enumerate}
+    \item Para estas conversiones hay que saber los prefijos y a que potencia equivalen
+    \begin{enumerate}
+        \item $3,5 \cdot 10^2$ m $=$ $0,35 \cdot 10^3$ m $=0,35$km
+        \item $0,00036$ g $=$ $0,36\cdot 10^{-3}$ g $0,36$ mg
+        \item $5,8 \cdot 10^5$kg  $=$ $0,58 \cdot 10^6 \cdot 10^3$g  $=$ $0,58 \cdot 10^{6+3}$g$=$ $0,58 \cdot 10^{9}$g$=$ $0,58$Gg
+    \end{enumerate}
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Capitulo                                %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\subsection{Notación Científica}
+\newpage
+\section{Introducción a la física}
+
+\subsection{Graficando} \label{sec:I}
+
+\firstword{U}{n} tren X2000 está esperando la hora de salida. Mario y Juana se sentaron al lado de la ventana que se encuentra justo en la mitad de un poste de electricidad (figura \ref{fig:fig1rot}). Ellos observan que la distancia entre poste poste es de $60$m a lo largo de las vías, y piensan utilizar esta información para mapear el movimiento del tren durante el primer minuto de viaje. 
+El plan consiste en que Mario va a decir \textbf{ahora} cada vez que pasen un poste, y Juana va a anotar el tiempo correspondiente.  
+
+Inicialmente pudieron anotar todos los tiempos, pero eventualmente solo lograron anotar tiempos correspondiente a poste de por medio. 
+%\fig{fig1rot}{Tren rapido X2000.}{i}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/fig1rot.jpg}
+    \caption{Tren rapido X2000.}
+    \label{fig:fig1rot}
+\end{figure}
+
+En el protocolo (ver tabla \ref{tab:1}) se puede apreciar las posiciones del tren a distintos tiempos. Sin embargo para tener una mirada mas clara realizaron una con la posiciones del tren y los tiempos correspondientes. El tiempo lo graficaron en el eje horizontal, mientras que las posiciones las expresaron en el eje vertical, como se muestra en la figura (\ref{fig:fig2}).
+  \begin{tiny}
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c|c}
+        Poste & Posición [$m$] & Tiempo [$s$] \\
+        1 &0 & 0\\
+        2 &60 & 15\\
+        3 &120 & 22\\
+        4 &180 & 27\\
+        5 &240 & 31\\
+        6 &300 & 35\\
+        7 &360 & --\\
+        8 &420 & 42\\
+        9 &480 & --\\
+       10 &540 & 49\\
+       11 &600 & --\\
+       13 &660 & 53\\
+       14 &720 & --\\
+       15 &780 & 57  
+    \end{tabular}
+    \caption{Posiciones del tren a distintos tiempos}
+    \label{tab:1}
+\end{table}
+   \end{tiny}      
+%\fig{fig2}{Gráfico de posición en función del tiempo.}{i}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/prob_10.png}
+    \caption{Gráfico de posición en función del tiempo.}
+    \label{fig:fig2}
+\end{figure}
+Vemos que los primeros $100$m el tren tardo $20$s en recorrerlos, mientras que los siguientes $100$m tardó $8$s. El último tramo de $100$m tardó apenas $4$s. Podemos concluir que la rapidez siempre aumenta cuando el gráfico se curva hacia arriba. En el gráfico también podemos ver cuanto ha recorrido el tren en cualquier instante. Por ejemplo, después de $46$s el tren ha recorrido $500$m. 
+
+A partir de estudiar un gráfico se obtiene una claro y mejor entendimiento de un movimiento. Cuando hacemos experimentos buscamos, muchas veces, la relación entre dos cantidades. Como regla, esta relación la encontramos mas fácil mediante gráficos, donde las mediciones se encuentran cada una en su eje. 
+
+
+\subsection{Rapidez} \label{sec:II}
+
+ \subsubsection{Movimiento Uniforme}
+ 
+  \firstword{L}{a} figura \ref{fig:fig3} muestra una foto de una pelota de golf que rueda sobre una superficie plana. La iluminación con una lampara estroboscopica es periódica. El obturador de la cámara estuvo abierta durante todo el movimiento, tal que la pelota es visible en cada una de las posiciones donde se encontraba durante cada destello de luz. El intervalo de tiempo entre los destellos es de $0,10$s, mientras que la escala es en centímetros.
+  %\fig{fig3}{Fotografía de una pelota de golf en movimiento}{i}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/fig3.jpg}
+    \caption{Fotografía de una pelota de golf en movimiento.}
+    \label{fig:fig3}
+\end{figure}
+  
+  ¿Qué tan grande es la rapidez de la pelota?
+  De la foto se puede ver que la pelota se mueva una misma distancia entre cada exposición. Por esta razón podemos decir que la rapidez es constante. Este tipo de movimientos se conoce como \textbf{Movimiento Uniforme}. 
+  Elegimos dos posiciones en la figura que llamamos s$_1$ y s$_2$, por los cuales pasa la pelota (borde derecho de la pelota) en los tiempos t$_1$ y t$_2$. De la imagen se puede leer los siguientes valores:
+
+\begin{eqnarray*}
+    s_1 = 0,29m \; \;\;t_1 = 0,1s\\
+    s_2 = 0,61m  \;\;\;t_2 = 0,30s
+\end{eqnarray*}
+
+    Si expresamos la rapidez de la pelota con la letra \textbf{v}, entonces:
+    
+    \[\text{v}=\frac{desplazamiento}{tiempo}=\frac{s_2-s_1}{t_2-t_1}=\frac{0,61m-0,29m}{0,30s-0,10s}=\frac{0,32m}{0,20s}=1,6m/s \]
+
+La letra griega $\Delta$ se utiliza para marcar un cambio o diferencia de una cantidad física. Por ejemplo, la cuenta anterior la podemos expresar de la siguiente manera:
+  
+   \[\text{v}=\frac{desplazamiento}{tiempo}=\frac{\Delta s}{\Delta t}=\frac{0,61m-0,29m}{0,30s-0,10s}=\frac{0,32m}{0,20s}=1,6m/s \]
+
+A veces es conveniente expresar los resultados en otras unidades mas familiares. Por ejemplo, estamos mas acostumbrados a hablar de rapidez/velocidad en unidades de $km/h$, asi que hagamos la conversión del resultado anterior a estas unidades:
+
+Queremos escribir m (metros)  en términos de km (kilómetros) y s (segundos) en términos de h (horas). Comencemos con los metros:
+
+Sabemos que:
+
+\begin{equation}
+1\text{km}= 1000 \text{m}\Longrightarrow\; 1 \text{m}= \frac{1}{1000}\text{km}= \frac{1}{10^3} \text{km} = 10^{-3}\text{km}
+\end{equation}
+
+% = 1000\text{m} \; \Longrightarrow} \; 1 \text{km}= \frac{1}{1000}\text{m}= \frac{1}{10^3}m = 10^{-3}\text{m}
+con respecto al tiempo, sabemos que:
+
+\begin{equation*}
+    1\text{h}= 3600 \text{s} \Longrightarrow 1 \text{s} = \frac{1}{3600}\text{h}
+\end{equation*}
+
+Ahora tenemos los dos factores de conversión:
+\\
+
+$\boxed{ \text{m}= \frac{1}{1000}km}$ y $\boxed{\frac{1}{3600}\text{h}}$
+\\
+
+Reemplazamos estos factores en el resultado que queremos convertir de la siguiente manera:
+
+\[1,6 \frac{m}{s}= 1,6\frac{\frac{1}{1000}km}{\frac{1}{3600}\text{h}}= 1,6 \frac{3600}{1000}\frac{km}{h}= 1,6 \cdot 3,6 \frac{km}{k}=5,76\frac{km}{h}\]
+
+\subsubsection{Gráfico   posición vs. tiempo}
+\firstword{E}{l} movimiento de la pelota de la figura anterior (\ref{fig:fig4}) se muestra a continuación. La posición se ha graficado en función del tiempo, es decir, la posición se muestra en el eje vertical mientras que el tiempo se expresa en el eje horizontal. Debido a que la pelota se desplaza a velocidad constante -la rapidez es constante- cambia la posición en compás con el tiempo y el gráfico es una línea recta. Con la ayuda de dos puntos en el gráfico -cualquiera dos puntos- se puede determinar la rapidez $v=\Delta s / \Delta t$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/prob_7.png}
+    \caption{Gráfico de posición vs. tiempo de la fotografía de la pelota de golf.}
+    \vspace{-6mm}
+    \label{fig:fig4}
+\end{figure}
+
+El cociente $\Delta s / \Delta t$, también se conoce como la pendiente del gráfico posición-tiempo. Mientras mas empinada la pendiente mayor es el cociente y consecuentemente mayor es la rapidez. 
+Por esto, la recta (a), del gráfico \ref{fig:v} tiene una mayor rapidez que la recta (b).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/prob_9.png}
+    \caption{Dos objetos a y b, moviéndose a distintas velocidades y arrancando a distintos tiempos y posicione}
+    \label{fig:v}
+\end{figure}
+%\fig{fig5.jpg}{dos objetos a y b, moviéndose a distintas velocidades y arrancando a distintos tiempos y posiciones}{ab}
+
+\subsubsection{Rapidez instantánea y rapidez media}
+\firstword{U}{n} conductor que maneja puede leer la rapidez directo del velocímetro del auto a cada instante durante el viaje, a veces puede ir mas rápido y otras veces mas lento. La rapidez en un tiempo dado se llama \textbf{rapidez instantánea}.  Si el conductor maneja $160$km  durante $2,0$ horas, la rapidez media sería ${160\; \text{km} / 2,0\; \text{h} = 80\; \text{km/h}}$
+Uno puede calcular la rapidez media para tramos mas chicos de la trayectoria. La rapidez media para un intervalo de tiempo muy pequeño debería ser muy parecido a la rapidez instantánea. 
+
+%\subsubsection{Registro de posición y tiempo}
+\newpage
+\subsubsection{Problemas}
+\begin{enumerate}
+    \item  La rapidez de un auto se lee cada segundo después de su arranque. Los valores se ven en la tabla (ver tabla). Dibuja un gráfico que muestre como varia la rapidez con el tiempo. Escribe, con ayuda del gráfico, cual es la rapidez del auto a los $2,5$s. 
+    \begin{table}[ht]
+    \centering
+    \begin{tabular}{l|c|c|c|c|c|c}
+        Tiempo [s]    & 0,0 &1,0 &2,0 &3,0 &4,0 &5,0  \\
+        Rapidez [m/s] & 0,0 &6,3 &12,0 & 17,5 & 21,4 & 24,0 
+    \end{tabular}
+    \caption{}
+    \label{tab:my_label}
+\end{table}
+    \item En las olimpiadas de Seoul (1988), el equipo de ciclismo sueco recorrió los $100,00$km en 1 hora, 59 minutos, 47 segundos. Calcula la velocidad media en  a) m/s, b) km/h 
+    \item El diagrama (ver figura \ref{fig:i6}) muestra la posición en función del tiempo de un ciclista. Determina la velocidad del ciclista.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{images/prob_4.png}
+        \caption{Gráfico de posición en función del tiempo de un ciclista.}
+        \vspace{-8mm}
+        \label{fig:i6}
+    \end{figure}
+ %   \fig{fig6.jpg}{Gráfico de posición en función del tiempo de un ciclista.}{i}
+    \item El gráfico posición-tiempo (ver figura \ref{fig:i7}) para un traslado de 7 horas es mostrado en la figura. Calcula la rapidez media: a) para las primeras 4 horas, b) las últimas 3 horas, c) las primeras 6 horas, d) todo el traslado.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{images/prob_5.png}
+        \caption{}
+        \vspace{-10mm}
+        \label{fig:i7}
+    \end{figure}
+%    \fig{fig7.jpg}{}{}
+    \item Ana y Pedro pidieron prestada una bicicleta doble para probarla. El gráfico (\ref{fig:i8}) muestra sus movimientos durante la prueba. a) ¿qué distancia y con que velocidad se movieron antes de parar y cambiar de posición en la bicicleta para comenzar el regreso?, b)¿que tan rápido fueron durante la vuelta? , c) ¿cuanto tiempo, desde el inicio, tardaron en recorrer $200$m?, d) ¿cual fue la velocidad media durante todo el viaje? 
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{images/prob_6.png}
+        \caption{}
+        \label{fig:i8}
+    \end{figure}
+%    \fig{fig8}{}{}
+    \item Un auto viaja $4,0$km a $80$km/h, después recorre una misma distancia a $40$km/h. Calcula la rapidez media del auto ruante los $8,0$km.  
+
+
+\end{enumerate}
+
+\subsubsection{Algunas soluciones}
+
+\begin{enumerate}
+    \item En este ejercicio nos piden que grafiquemos los datos, donde la velocidad va en el eje vertical, mientras que el tiempo en el eje horizontal. Luego nos piden que con ayuda del gráfico identifiquemos la velocidad en el tiempo $t=2,5$s. Para esto trazamos una línea vertícal al tiempo correspondiente y vemos a que velocidad corresponde en el eje de la velocidad, como se muestra en la figura. Vemos que la velocidad para el tiempo $t=2,5$s es de $\sim 15$m/s.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=.75\linewidth]{resp_1.png}
+        \caption{}
+        \label{fig:enter-label}
+    \end{figure}
+    \item
+    \begin{enumerate}
+        \item En este problema nos piden que calculemos la velocidad del ciclista en unidades de m/s y km/h. Para esto primero convertimos el tiempo en segundos
+    \begin{eqnarray*}
+        1h &=& 60 \cdot 60 \text{s} = 3600 \text{s} \\
+        59 \text{min} &=& 59\cdot 60 \text{s} = 3540 \text{s}\\        
+    \end{eqnarray*}
+    Sumamos los segundos \[3600s+3540s+ 47s= 7,187\cdot10^3 s \]. Convertimos los kilómetros en metros \[100 \text{km}=100\cdot 10^3 \text{m}\] y luego calculamos la velocidad de la siguiente manera \[v=\frac{\Delta S}{\Delta t}=\frac{100\cdot 10^3 \text{m}}{7,187\cdot10^3 s}=\frac{100}{7,187}\frac{10^3}{10^3} \frac{m}{s}=13,9 \frac{m}{s}\]
+    \item En esta parte del problema nos piden que expresemo el resultado en km/h. Para eso recordamos que:\[ 1km = 1\cdot 10^3 m \Rightarrow m = 10^{-3}km \] y  \[1h = 3600s \Rightarrow 1s = 1/3600 h\] por eso \[13,9\frac{m}{s}=13,9 \frac{10^{-3}km}{\frac{1}{3600} h}= 13,9 \frac{3600}{10^{3}}\frac{km}{h}= 13,9\cdot 3,6\frac{km}{h}\sim 50 \frac{km}{h}\]
+    \end{enumerate}
+    
+    \item En este ejercicio piden que calculen la velocidad del ciclista a partir del gráfico de posición vs. tiempo. Como es un movimiento rectilineo uniforme solo hace falta calcular la pendiente de la recta para calcular la velocidad. Pueden utilizar, por ejemplo, el punto (5,0s;41m) y el punto (0s;15m). Luego calculamos la velocidad de la siguiente manera: \[v=\frac{\Delta S}{\Delta t}= \frac{41m -15m}{5,0s - 0,0s} =5,2 \frac{m}{s} \]
+    \item 
+    \begin{enumerate}
+        \item $38$km/h
+        \item $100$km/h
+        \item Si vemos el gráfico podemos notar que durante las 6 primeras horas muestra un desplazamiento de $350$km. Entonces podemos calcular la velocidad media de la siguiente manera: \[\frac{\Delta S}{\Delta t}=\frac{350 \text{km}}{6 \text{h}} \sim 58 \text{km/h} \] 
+        \item Mirando el gráfico podemos ver que durante las 7 horas que dura el movimiento el desplazamiento es de 450km, entonces la velocidad media es:
+        \[ v=\frac{450 \text{km}}{7 \text{h} }\sim 64 \text{km/h}\]
+    \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item qué distancia y con que velocidad se movieron antes de parar y cambiar de posición en la bicicleta para comenzar el regreso. Mirando el gráfico podemos que transcurren  $\Delta t=15s$ al pararse, recorriendo $\Delta S = 120m$. La velocidad durante ese tramo es \[v=\frac{120m}{15s}=8 m/s\].
+        \item En el tiempo $t=30s$ inician la vuelta y llegan al punto inicial en el instante $t=60 \text{s}$, y recorren la misma distancia que en el viaje de ida, pero esta ves su posición inicial es $120 \text{120m}$ y su posición final es $0 \text{m}$. Su velocidad durante el regreso es \[v=\frac{\Delta S}{\Delta t}=\frac{0 \text{m} - 120 \text{m}}{60\text{s} -30\text{s}}= -4 \text{m/s} \] El signo negativo se debe a que la dirección del desplazamiento es es el sentido opuesto, es decir, están volviendo.
+        \item Del gráfico podemos leer que la ida y la vuelta, mas el tiempo que estuvieron parados duró 60 segundos. 
+        \item Si miramos el desplazamiento total, podemos darnos cuenta que la posición inicial es la misma que la posición final, entonces la velocidad media es $0$m/s.
+    \end{enumerate}
+    \item En este ejercicio nos piden que calculemos la velocidad media de un auto que viaja 4km a 80km/h y luego recorre otros 4km pero a 40km/h. Entonces el desplazamiento total es de 8km, pero para poder calcular la velocidad media tenemos que calcular los dos tiempos, el que corresponde a los primeros 4km y luego a los segundos 4km. 
+    \begin{eqnarray*}
+        \Delta t_1 &= \Delta S_1 / v_1 = 4,0 \text{km}/80 \text{km/h} &=  0,05 \text{h} \\
+        \Delta t_2 &= \Delta S_2 / v_2 = 4,0 \text{km}/40 \text{km/h} &=  0,1 \text{h}
+    \end{eqnarray*}
+    Ahora podemos calcular el tiempo total, el cual es $\Delta t = \Delta t_1 + \Delta t_2 = 0,05\text{h} + 0,1 \text{h}=0,15\text{h}$. El desplazamiento total de $\Delta S = 4 km + 4 km = 8 km $. Entonces podemos calcular la velocidad media de la siguiente manera: \[v=\frac{\Delta S}{\Delta t}=\frac{8km}{0,15h} \sim 53 \text{km/h}  \] 
+\end{enumerate}
+
+
+
+
+% newpage
+\clearpage
+\section{ Fuerzas}
+\firstword{D}{istintos} tipos de fuerzas afectan de una manera determinante a la formación de nuestras cosas. Intenta, por ejemplo, pensar en que pasaría si la fuerza de gravedad de golpe desapareciera.
+Hay razones suficientes para estudiar las fuerzas y sus influencias. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/F_fig0.jpg}
+   % \caption{Caption}
+    \label{F_fig:0}
+    \vspace{-9mm}    
+\end{figure}
+
+Un auto arranca a partir de que fuerzas del motor hacen que las ruedas giren. Un esquiador de montaña baja esquiando por la influencia de la fuerza de gravedad. Un imán atrae un clavo. Son fuerzas de distinta naturaleza las que actúan. 
+
+\clearpage
+\begin{wrapfigure}{r}{3cm}
+\caption{}
+\label{wrap-fig:1}
+\includegraphics[width=3cm]{images/cinematica/cinematica_f1.png}
+\end{wrapfigure}
+Fuerzas también actúan sobre objetos que no se mueven.  La figura \ref{wrap-fig:1} muestra una persona que sostiene una valija. La valija \textbf{no se mueve}, sin embargo hay fuerzas que diversas que están actuando sobre la misma. La \textbf{fuerza de gravedad} tira de la valija hacia abajo. Una fuerza muscular de la mano impide o realiza una fuerza en el sentido contrario a la fuerza de gravedad, impidiendo que esta caiga. Si uno pudiera estudiar la valija en detalle, uno descubriría que existen fuerzas electromagnéticas que mantienen los átomos juntos en un lugar determinado, tal que la valija mantenga la forma. 
+\\
+\\
+\subsection{Representando las fuerzas}
+
+\firstword{U}{na} fuerza no solo tiene un tamaño dado, sino que también tienen cierta dirección. Por esta razón es práctico representar las fuerzas con flechas que se conocen como vectores. El largo de la flecha representa la magnitud (tamaño) de la fuerza, mientras que la dirección de la flecha representa eso, la dirección en la cual actúa la fuerza. 
+Para demostrar el método dibujamos el \textbf{peso} (fuerza que ejerce la tierra sobre los objetos que están en la superficie de la Tierra) y la fuerza que ejerce la mano sobre la valija con flechas (ver figura \ref{F_fig:1}). La fuerza que ejerce la mano sobre la valija la marcamos con una flecha que sale de la manija y apunta hacia arriba. La fuerza de gravedad esta representada con muchas flechitas que apuntan hacia abajo (centro de la Tierra).  La fuerza de gravedad tiende a atraer todas las pequeñas partículas de la valija hacia abajo como se muestra en el esquema (a). 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/cinematica/cinematica_f2.png}
+    \caption{}
+    \label{F_fig:1}
+      \vspace{-6mm}  
+\end{figure}
+
+Pero dibujar muchas flechas de esta manera, para representar el efecto de la fuerza de gravedad sobre las cosas, no es práctico. Por esta razón reemplazamos todas las pequeñas fuerzas de gravedad de las partículas  por una sola que parte desde el centro de gravedad de la valija, como se muestra en (b), y es igual de grande, pero con sentido opuesto, a la fuerza que apunta hacia arriba. A partir de ahora vamos a representar el peso de los objetos con una sola flecha que parte desde el centro de gravedad del objeto. 
+
+\subsection{Vectores}
+
+\firstword{C}{antidades} como la de las fuerzas tienen \textbf{dirección} y \textbf{magnitud} y por eso se conocen como \textbf{vectores} y se representan con \textbf{flechas}.
+Una \textbf{velocidad} es también un vector. Alguien que va a patear un penal en un partido de futbol sabe que no es solo cosa de patear fuerte, sino de, ademas, darle dirección al movimiento.  
+
+La fuerzas se suelen representar con la letra \textbf{F} (por su nombre en ingles, Force).  En el texto vamos a utilizar la letra $ \vec{F}$ cuando queremos enfatizar que es una cantidad vectorial. Escribir la letra F (sin la flecha arriba) hace referencia al tamaño de la fuerza, mientras que la letra $\vec{F}$ (con la flecha arriba) implica que ademas de tamaño tiene dirección y sentido. 
+
+Muchas cantidades solo tienen magnitud (tamaño). Algunas de estas cantidades son la \textbf{masa} y la \textbf{densidad}. Hablar de dirección en conjunto con la masa o densidad no tiene sentido. Por eso estas cantidades se conocen como \textbf{escalares}.
+
+\subsubsection{Ejemplos}
+Dibuja las figuras e intenta llegar a los resultados antes de mirar las respuestas. Concentrate en la dirección de las flechas que representan las fuerzas y sus puntos de partid y no en el tamaño. 
+
+\begin{itemize}
+    \item a) Una bolita cuelga de una cuerda. Dibuja las fuerzas que actúan sobre la bolita. b) Una bolita cuelga de dos cuerdas. Dibuja las fuerzas que actúan sobre la bolita.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/dinamica/fuerzas_1.png}
+    \caption{}
+      \vspace{-6mm}  
+    \label{fig:F}
+\end{figure}
+    \item a) Un libro se encuentra apoyado sobre una mesa. Dibuja las fuerzas que actúan sobre el libro. b) Dos libros se encuentran uno encima del otro sobre una mesa. Dibuja las fuerzas que actúan sobre el libro de abajo.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/dinamica/dinamica_e2_r.png}
+    \caption{}
+     \vspace{-6mm}
+    \label{fig:enter-label}
+\end{figure}
+    \item Una tabla de madera se encuentra apoyada sobre dos caballetes. Dibuja las fuerzas que actúan sobre la tabla. 
+    \begin{figure}[H]
+       \centering
+        \includegraphics[width=0.6\linewidth]{images/dinamica/fig5b.png}
+        \caption{}
+         \vspace{-6mm}
+        \label{fig:enter-label}
+    \end{figure}
+\end{itemize}
+
+\subsubsection{Soluciones}
+\begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item La fuerza de gravedad actúa de manera vertical apuntando hacia \textbf{abajo} desde el centro de la bolita. La cuerda (\textbf{tensión}) actúa desde la parte superior de la bolita hacia arriba. El tamaño de las fuerzas son iguales, pero en direcciones opuestas .
+        \item Ademas de la fuerza de gravedad (igual al ejercicio anterior), ahora hay dos fuerzas debido a las dos cuerdas que apuntan en la dirección de las cuerdas. 
+    \end{enumerate}
+\end{enumerate}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{images/dinamica/fuerzas_2.png}
+        \caption{}
+        \label{fig:enter-label}
+    \end{figure}
+    \begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item El peso del libro es contrarrestado por otra fuerza que tiene su origen en la superficie de la mesa, entre el libro y la mesa, con dirección hacia arriba. En todos los puntos de contacto entre la mesa y el libro, este último es presionado hacia arriba. Para simplificar, esta fuerza se representa por un solo vector que apunta hacia arriba, y debería estar dibujado justo abajo del peso, pero para que se note lo hemos dibujado un poco desplazado. Esta fuerza de la superficie de apoyo actúa \textbf{siempre} con un angulo de $90^\circ$ con respecto a la superficie, y por esto se la conoce como fuerza \textbf{normal}. Es importante destacar que solo dibujamos las fuerzas que actúan sobre el libro y \textbf{no} las que el libro ejerce sobre la mesa.
+        \item Es importante tener en claro cual de los objetos nos interesa antes de dibujar las fuerzas que intervienen. En este caso nos interesa el libro de abajo, el que está en contacto con la mesa. En este caso sigue existiendo el peso del libro, que es idéntico al caso anterior, y lo representamos con una flecha que sale del centro de masa hacia abajo. Luego tenemos el peso del otro libro, o fuerza que ejerce el otro libro (por su peso) sobre el libro de abajo. Esta fuerza la representamos con una flecha que empieza en la superficie superior del libro de abajo en dirección hacia abajo. El tamaño de esta flecha es idéntico al del peso del libro de arriba ya que se debe a la fuerza gravitacional que actúa sobre el libro de arriba. En la superficie de contacto entre el libro de abajo y la mesa esta la fuerza normal, que apunta hacia arriba y tiene una magnitud igual a la suma de las dos que apuntan hacia abajo. 
+    \end{enumerate}
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{images/dinamica/dinamica_e2.png}
+        \caption{}
+        \label{fig:enter-label}
+    \end{figure}
+    \item Debido a que la tabla tiene el mismo espesor en toda su longitud, su centro de gravedad se encuentra en el centro de la tabla. Por esto se representa la fuerza de gravedad con una flecha que sale del centro de gravedad en dirección hacia abajo. La tabla no se cae debido a que los dos caballetes ejercen una fuerza normal hacia arriba. Como la tabla esta centrada, cada caballete aporta una fuerza normal con la mitad de la magnitud de la fuerza de gravedad, apuntando hacia arriba.     
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\linewidth]{images/dinamica/fig5b2.png}
+        \caption{}
+        \label{fig:enter-label}
+    \end{figure}
+ \end{enumerate}
+
+
+\clearpage
+
+\subsection{Midiendo las fuerzas}
+ \subsubsection{La unidad de las fuerzas}
+
+ \firstword{U}{n} resorte se estira al tirar del mismo. Mientras mas mayor sea la fuerza que se aplica mas se estira el resorte. Dentro de limites razonables, el estiramiento del resorte va en compás con el tamaño de la fuerza aplicada (ver figura \ref{fig:M1}). Por esta razón, uno puede utilizar resortes para medir fuerzas. En estos medidores de fuerzas, \textbf{dinamómetros}, las fuerzas se leen de una escala dibujada y graduada directamente en unidades de fuerzas. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/dinamica/d_0.png}
+    \caption{}
+    \label{fig:M1}
+\end{figure}
+
+La unidad de las fuerzas en el sistema \textbf{SI} (sistema internacional) es el \textbf{Newton} (N). Como se llegó a esta definición de la unidad será retomado mas adelante en el curso. El nombre de la unidad viene del nombre de un físico conocido de nombre Isaac Newton (1642-1727).
+
+\subsubsection{La fuerza de gravedad (peso) y la masa -- proporcionalidad}
+Todos los objetos en la cercanía de la Tierra son atraídos hacia el centro del planeta por una fuerza gravitacional, el \textbf{peso}. Mientras mas grande la masa del objeto, mas grande la fuerza de gravedad (peso). El peso y la masa están íntimamente relacionados, razón por la cual mucha gente las confunde. Pero el \textbf{peso} y la \textbf{masa} son cosas distinta, aunque uno es afectado por el otro. 
+Un astronauta que aluniza (aterriza en la superficie de la luna) es afectado por una fuerza gravitacional inferior a la de la Tierra, por eso su peso es menor que el que tendría en la superficie de la Tierra, mientras que su masa es la misma. 
+Otra diferencia entre la masa y el peso, es que la masa es una cantidad escalar, y el peso es una cantidad vectorial, la cual tiene tamaño y dirección. 
+
+Medimos la masa \textbf{m} en varios objetos con una balanza y la fuerza \textbf{F} para los mismos objetos con  un dinamómetro. La figura \ref{fig:p_vs_m} muestra los resultados de estas mediciones en un gráfico de peso en función de la masa. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/prob_11.png}
+    \caption{}
+    \label{fig:p_vs_m}
+\end{figure}
+El gráfico es una línea recta que sale del origen. Esto significa que el peso \textbf{F} cambia al compás de la masa \textbf{m}, tal que el cociente $\frac{F}{m}$ tiene siempre el mismo valor. Por esto podemos escribir 
+\[\frac{F}{m}\] o \[F = k \cdot m \]
+Podemos decir que el \textbf{peso} es \textbf{directamente proporcional} a la \textbf{masa}, y la constante \textbf{k} es la \textbf{constante de proporcionalidad}. 
+
+\subsubsection{Factor de peso}
+En la proporcionalidad entre la \textbf{fuerza de gravedad} y la \textbf{masa}, la constante de proporcionalidad adquiere un significado importante. Este se conoce como \textbf{constante gravitacional} y se suele representar con la letra \textbf{g} en lugar de \textbf{k}. Entonces la ecuación anterior se escribe ahora como:
+\[F = m \cdot g\]
+El factor gravitacional $g=F/m$ representa el tamaño de la fuerza de gravedad sobre una masa de $1$kg. El valor de \textbf{g} se obtiene calculando la pendiente de la curva (\ref{fig:p_vs_m}), la cual, como pasa por el origen se puede simplificar utilizando un solo punto
+\[g=\frac{F}{m}= \frac{98}{10}\text{N/kg}\]
+
+Haciendo una inspección mas minuciosa muestra que \textbf{g} varía un poco según el lugar de la superficie en la que nos encontremos. El valor de \textbf{g} varía desde $9,780$N/kg en el ecuador, hasta $9,82$N/kg en los polos. Estas pequeñas variaciones tienen, en general, poca importancia práctica para nosotros. En general es suficiente con tomar el valor de \textbf{g} como $9,8$N/kg. 
+
+El factor gravitacional \textbf{g} es una medida de la aceleración gravitacional que produce la Tierra sobre un objeto en la superficie de la Tierra. Objetos en otros planetas o cuerpos celestes son afectados por fuerzas gravitacionales distintas. Por ejemplo, en la superficie de la Luna el factor de gravedad es $1,6$N/kg. La fuerza de gravedad que ejerce la Luna sobre cualquier objeto en su superficie es aproximadamente un séptimo del que sufriría en la superficie de la Tierra. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/dinamica/astronauta.png}
+    \caption{Astronauta de la misión Apollo saltando en la superficie de la Luna}
+    \label{fig:enter-label}
+\end{figure}
+\begin{tcolorbox}[colframe=gray, colback=white, coltitle=white, sharp corners, title=Problema para estudiar]
+\begin{enumerate}
+    \item[a)] Calcula la fuerza de gravedad ejercid por la Tierra sobre una persona de $50$kg de masa.
+    \item[b)] ¿Qué masa tiene un objeto que pesa $1,0$N?
+\end{enumerate}
+Respuestas:
+\begin{enumerate}
+    \item[a)] $0,49$kN
+    \item[b)] $1,0$hg
+\end{enumerate}
+
+\end{tcolorbox}
+
+
+\subsubsection{Resultante de fuerzas paralelas}
+La figura \ref{fig:T_2} muestra una fotografía de una bandita elástica estirada con uno y dos dinamómetros una misma longitud de distintas maneras. La bandita elástica es afectada por fuerzas cuyas magnitudes se pueden leer directamente de los dinamómetros. Los diagramas de los vectores mostrados al lado de la foto muestran las fuerzas de la manera correcta. 
+Podemos observar de la foto que la bandita elástica se estira una misma distancia en los tres casos. Podemos sacar la conclusión de que la fuerza $\overrightarrow{F}_1$ que actúa sola es de la misma magnitud que las fuerzas $\overrightarrow{F}_2$ y $\overrightarrow{F}_3$ juntas. Los vectores $\overrightarrow{F}_2$ y $\overrightarrow{F}_3$ pueden ser reemplazados por una única fuerza $\overrightarrow{F}_1$.
+Por esta razón podemos llamar al vector $\overrightarrow{F}_1$ como la fuerza resultante.  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/dinamica/res_1.png}
+    \caption{}
+    \label{fig:T_2}
+\end{figure}
+
+La figura \ref{fig:resultante_suma} muestra un ejemplo donde dos fuerzas que apuntan en una misma dirección. La suma se puede realizar gráficamente trasladando las fuerzas tal como se muestra en la figura, donde la resultante es un vector que va desde el comienzo de la primera hasta el final de la segunda.
+La figura \ref{fig:resultante_resta} muestra dos fuerzas que tienen direcciones opuestas: De la misma manera que en el caso anterior, se traslada un vector tal que comience en el final del primero. La resultante es un vector que va desde el comienzo del primer vector hasta el final del segundo vector.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/dinamica/resultante_1.png}
+    \caption{Suma gráfica de vectores}
+    \label{fig:resultante_suma}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/dinamica/resultante_2.png}
+    \caption{Resta gráfica de vectores}
+    \label{fig:resultante_resta}
+\end{figure}
+
+\newpage
+\subsubsection{Equilibrio}
+
+\textbf{Objeto quietos o en descanso:}
+\\[12pt]
+¿Existe alguna relación entre las fuerzas que actúan sobre un objeto que se encuentra quieto?
+Para investigar esto observamos la imagen de una pesa de $1$kg que cuelga de dos maneras distintas. En la figura (b) se encuentran las fuerzas que actúan sobre la pesa dibujadas a escala. El tamaño del peso es $\text{m}\cdot \text{g} = 1,0 \text{kg} \cdot 9,8 \text{N/kg} = 9,8 \text{N}$. La magnitud de las fuerzas que ejercen los dinamómetros se pueden leer directamente de los instrumentos. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/dinamica/pesas_ab.png}
+    \caption{a) Dos fotos de una pesa de 1 kg colgada de 1 y 2 dinamómetros. b) Representación de las fuerzas para ambos casos.}
+    \label{fig:pesas_resultantes}
+\end{figure}
+
+\textbf{Condición de equilibrio:}
+\\[12pt]
+No es difícil encontrar la relación que estamos buscando. En la figura \ref{resultante} las fuerzas se han trasladado paralelamente y se ha determinado su resultante. En ambos casos volvemos al punto de inicio. Esto significa que el resultado de la suma de las fuerzas para ambos casos (a) y (b) es cero. La suma de las fuerzas que actúan sobre un objeto quieto (o en reposo) es siempre cero. Esto es cierto para todos los casos, aunque las fuerzas no sean paralelas. \textbf{Si el objeto esta quieto} (en reposo), la suma de las fuerzas es \textbf{siempre cero}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/dinamica/ab_cero.png}
+    \caption{Las resultantes de las fuerzas que actúan sobre la pesa en la figura \ref{fig:pesas_resultantes} son cero para ambos casos. }
+    \label{resultante}
+\end{figure}
+
+\textbf{Ejemplo}
+\begin{enumerate}
+    \item Una pesa de $10$N se encuentra apoyada sobre una mesa horizontal. Con un dinamómetro se tira, con un hilo, hacia arriba sin que la pesa pierda contacto con la mesa. El dinamómetro muestra un valor de $6$N. Determina las fuerza que ejerce la mesa sobre la
+    pesa. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{images/dinamica/ejemplo_1.png}
+        \caption{}
+        \label{fig:enter-label}
+    \end{figure}
+\end{enumerate}
+
+\textbf{Respuesta:}
+\begin{enumerate}
+    \item Las tres fuerzas que actúan sobre la pesa son: el peso $\text{mg}=10$N, la fuerza que ejerce el dinamómetro $F = 6$N y la fuerza normal $N$ que ejerce la mesa sobre la pesa. De acuerdo con la condición de equilibrio, la suma de las fuerzas tiene que ser \textbf{cero}. \[N+F=mg\] \[N=mg-F= 10N-6N=4\text{N}\]
+    La mesa ejerce una fuerza Normal sobre la pesa de $4$N hacia arriba.
+\end{enumerate}
+
+\subsubsection{Mas sobre fuerzas paralelas}
+Hasta ahora hemos considerado situaciones donde las fuerzas son paralelas y actúan sobre en un mismo punto. ¿Cómo calculamos la resultante si las fuerzas paralelas actúan en en distintas posiciones?. La figura \ref{fig:tabla_decentrada} a) muestra una tabla homogénea apoyada en dos caballetes. El centro de la tabla se encuentra justo en el medio entre los caballetes. Por esta razón la fuerza que ejercen los caballetes sobre la tabla son obviamente de la misma magnitud y cada una tiene un tamaño igual a la mitad de peso de la tabla ($F/2$).
+Pero, ¿que tan grande van a ser las fuerzas $F_1$ y $F_2$ si desplazamos un poco la tabla?.
+Sabemos que la suma de las dos fuerzas $F_1 +F_2$ tiene que ser igual al peso de la tabla $F=mg$, su resultante es igual que en el caso anterior a). A continuación haremos el razonamiento que nos lleva a poder determinar las dos fuerzas que ejercen los caballetes para el caso b). 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/dinamica/tabla_decentrada.png}
+    \caption{}
+    \label{fig:tabla_decentrada}
+\end{figure}
+
+
+
+
+
+%\subsubsection{Fricción}
+
+\newpage
+
+
+\subsection{Fricción}
+
+Hay una diferencia enorme entre conducir un auto sobre asfalto seco y sobre una calle congelada. Ante una frenada abrupta, en el asfalto seco el auto para rápidamente, mientras que en una superficie congelada el auto se desliza un tramo bastante mas largo.  La \textbf{fricción} es distinta en ambos casos. Entre las ruedas y el asfalto se produce una fricción mucho mas grande que la que se produce entre las ruedas y el hielo.
+
+\subsubsection{Fricción de deslizamiento}
+
+No es difícil entender por qué la fricción aparece cuando dos superficies se deslizan entre sí. Las superficies tienen siempre cierto grado de rugosidad e imperfecciones.  Hasta las superficies mas pulidas muestran imperfecciones microscópicas. No siempre pulir mas implica menor fricción. A veces, superficies muy pulidas permiten que exista contacto a nivel molecular entre ellas, produciendo cierta atracción entre las superficies. Como consecuencia la fricción puede llegar a aumenta, y en algunos casos hasta pegar las superficies. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/dinamica/friccion_1.png}
+    \caption{Superficies muy pulidas tienen imperfecciones.}
+    \label{fig:friccion_1}
+\end{figure}
+La figura \ref{fig:friccion_2} representa una caja grande apoyada sobre el piso. La resultante de las fuerzas en a) es \textbf{cero}, la caja esta en reposo. En b), una persona intenta empujarla sobre el piso sin lograrlo ya qu al mismo tiempo se genera una fuerza de fricción de igual magnitud pero en sentido opuesto que impide su deslizamiento, la caja sigue en equilibrio.  En c) la fuerza que ejerce la persona sobre la caja ha aumentado, pero la fricción aumentó con la misma magnitud en sentido opuesto al esfuerzo. La persona hace mas fuerza en el caso d) y la fricción ya no puede detener el movimiento de la caja. La fricción está en su máximo valor pero la fuerza que ejerce la persona sobre la caja es mayor que esta y se comienza a mover, a desplazar sobre el piso. La resultante de las fuerzas horizontales no es \textbf{cero}. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/dinamica/friccion_2.png}
+    \caption{}
+    \label{fig:friccion_2}
+\end{figure}
+
+No son solo las superficies las que afectan a la fricción. Mientras mas pesada sea la caja mayor será la fuerza \textbf{normal} que ejerce el suelo sobre la caja. La caja ejerce una mayor presión sobre el suelo y por ende las irregularidades de las superficies se acercan. Se hace mas \textbf{difícil} desplazar la caja. La fuerza de fricción ha aumentado con el aumento de la fuerza normal.
+
+\newpage
+\subsubsection{Otros tipos de fricción}
+
+En muchas situaciones, la fricción es una dificultad, y en general se trabaja para disminuirla o atenuarla. Uno de los descubrimientos mas importantes del ser humano es la \textbf{rueda}. La fricción de rodamiento es bastante mas pequeña que la fricción de deslizamiento. Otro método de disminuir la fricción es utilizar \textbf{lubricación}, de manera tal que partículas entre dos superficies queden separadas por este medió, y consecuentemente la fricción disminuya. Los aviones y los barcos son afectados por fuerzas de resistencia producidas por el aire y el agua. Una característica de los fluidos y los gases, es que la fricción aumenta con el aumento de la rapidez del objeto que se mueve en estos medios. Un barco que se desplaza lentamente sobre el agua prácticamente no se detiene por la fricción, mientras que un barco a motor que navega con alta rapidez pierde rápidamente su velocidad una vez que los motores se paran. 
+
+
+\begin{tcolorbox}[colframe=gray, colback=white, coltitle=white, sharp corners, title=Problema para estudiar]
+
+Un bloque se encuentra apoyado sobre una mesa. Una persona tira de bloque con una fuerza de $1.5$N sin lograr que este se mueva. Determina la fuerza de fricción que actúa sobre el bloque y su dirección.  
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/dinamica/otra_friccion.png}
+    \caption{}
+    \label{fig:enter-label}
+\end{figure}
+
+Respuestas:
+
+La magnitud de la fuerza de fricción es $1.5$N y su dirección es en paralela a la mesa con sentido opuesto a la fuerza con la que tira la persona. 
+\end{tcolorbox}
+
+\subsection{Fuerza de acción y de reacción}
+Una fuerza que actúa sobre un objeto es causada por otro objeto. Pero, este segundo objeto siente una fuerza que actúa sobre el como respuesta a su acción. Es decir, \textbf{si B ejerce una fuerza sobre A, A también ejerce una fuerza sobre B de la misma magnitud pero en sentido opuesto}.  La fuerzas siempre ocurren en \textbf{pares}. Para cada fuerza que actúa sobre un objeto uno puede, \textbf{siempre}, encontrar una fuerza de \textbf{reacción} que apunta en el sentido opuesto que este objeto ejerce sobre el otro.
+Las siguientes figuras muestran ejemplos donde se evidencian las de fuerzas de acción  y reacción.
+\begin{figure}[H]
+\begin{minipage}[h]{0.47\linewidth}
+\begin{center}
+\includegraphics[width=1\linewidth]{images/dinamica/fig4_a.png} 
+\caption{Una bolita de acero cuelga de un hilo. Cuando uno acerca un imán a la bolita esta es atraída al imán con una fuerza \textbf{F}. La fuerza es producto de un intercambio entre la bolita y el imán, y por eso el imán siente una fuerza que ejerce la bolita con la misma magnitud pero en sentido opuesto.}
+\label{qwe1}
+\end{center} 
+\end{minipage}
+\hfill
+%\vspace{0.2 cm}
+\begin{minipage}[h]{0.47\linewidth}
+\begin{center}
+\includegraphics[width=1\linewidth]{images/dinamica/fig4_b.png} 
+\caption{En el motor de un avión se desarrollan fuerzas que tiran grandes cantidades de gases hacia atrás con gran rapidez. La fuerza de reacción es la encargada de lograr el empuje que necesita el avión para volar.}
+\label{qwe2}
+\end{center}
+\end{minipage}
+\vfill
+\vspace{0.2 cm}
+\begin{minipage}[h]{0.47\linewidth}
+\begin{center}
+\includegraphics[width=1\linewidth]{images/dinamica/fig4_c.png} 
+\caption{Una piedra cae por acción de la fuerza gravitacional (peso). ¿Donde esta la fuerza de reacción?. Acá es donde aparece la pregunta sobre la interacción. En la practica la piedra también ejerce una fuerza de atracción sobre la Tierra }
+\label{qwe3}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.47\linewidth}
+\begin{center}
+\includegraphics[width=1\linewidth]{images/dinamica/fig4_d.png} 
+\caption{Una joven se encuentra sentada sobre un caballo. La joven se mantiene sentada gracias a la fuerza normal que ejerce la espalda del caballo, pero el caballo siente una fuerza de la misma magnitud (peso) con dirección hacia abajo. }
+\label{qwe4}
+\end{center}
+\end{minipage}
+%\caption{Correlation}
+\label{ris}
+\end{figure}
+
+Es importante tener claro cual de los objetos uno quiere estudiar. Son las fuerzas que actúan sobre el objeto de interés las que hay que representar y no las fuerzas de reacción que surjan del efecto del objeto de interés sobre el entorno. 
+
+\begin{tcolorbox}[colframe=gray, colback=white, coltitle=white, sharp corners, title=Problema para estudiar]
+
+En la figura \ref{qwe4} la joven se encuentra en equilibrio. Su peso (no dibujado!) tiene la misma magnitud que la fuerza normal \textbf{$N_1$}. ¿Donde esta esta la fuerza de reacción del peso de la joven?
+
+Respuestas:
+
+La fuerza gemela del peso de la joven se debería representar en el centro de la tierra (ver figura \ref{qwe3}) apuntando hacia la joven con la misma magnitud que el peso de la joven. 
+\end{tcolorbox}
+
+\subsection{Problemas}
+
+\begin{enumerate}
+    \item Dibuja las fuerzas que actúan sobre la carretilla (ver figura \ref{fig:dinamica_p8}).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\linewidth]{images/dinamica/p_8.png}
+        \caption{Carretilla cargada.}
+        \label{fig:dinamica_p8}
+    \end{figure}
+    \item Dibuja las fuerzas que actúan sobre la bolita que cuelga de una cuerda y es soportada por la pared (ver figura \ref{fig:dinamica_p7}).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.15\linewidth]{images/dinamica/p_7.png}
+        \caption{Bolita colgando de una cuerda.}
+        \label{fig:dinamica_p7}
+    \end{figure}
+    %\item 
+    \item Calcula el peso de un carrito con una masa de $2,39$kg.
+    \item Calcula el peso de un átomo de masa $1,51\cdot 10^{-26}$kg
+    \item Alto en la atmósfera la fuerza de gravedad tiene un valor menor que en la superficie de la Tierra. Calcula el peso de un cohete con masa $1500$kg si la fuerza de gravedad es $8,6$N/kg.
+    \item Una viga  con $120$N de peso esta planificada tal que se equilibre con un contrapeso cuyo peso es de $240$N (ver figura \ref{fig:dinamica_p1}). ¿Que fuerza hace el palo que sostiene la viga?
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{images/dinamica/p_1.png}
+        \caption{Viga con peso en equilibrio.}
+        \label{fig:dinamica_p1}
+    \end{figure}
+    \item Una masa, cuyo peso es de $10$N, cuelga de una soga. Determina la fuerza que ejerce la soga sobre la masa. ¿Cuál es su dirección?. Realiza el esquema del sistema.  
+    \item Un masa cuyo peso es de $20,0$N se encuentra apoyado sobre una mesa horizontal. Se tira hacia arriba con un dinamómetro (como se muestra en la figura \ref{fig:dinamica_p2}) hasta lograr que este marque $16,0$N. Determina la fuerza que ejerce la fuerza sobre el peso. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\linewidth]{images/dinamica/p_2.png}
+        \caption{Masa parcialmente sostenida por dinamómetro.}
+        \label{fig:dinamica_p2}
+    \end{figure}
+    \item Un cilindro metálico, que cuelga de un dinamómetro, se mete en un recipiente con agua, como se ve en la figura \ref{fig:dinamica_p3}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.15\linewidth]{images/dinamica/p_3.png}
+        \caption{Pesa sumergida en agua.}
+        \label{fig:dinamica_p3}
+    \end{figure}
+    \item Una bolita con un peso de $3,0$N esta fijada a una mesa mediante una soga, y de la parte de arriba se tira con otra soga con un dinamómetro como se ve en la figura \ref{fig:dinamica_p4}. Las sogas se mantienen tensadas mientras se lee la fuerza $F$ del dinamómetro. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.15\linewidth]{images/dinamica/p_4.png}
+        \caption{Caption}
+        \label{fig:dinamica_p4}
+    \end{figure}
+    \begin{enumerate}
+        \item Calcula la tensión $T$ de la soga de abajo si el dinamómetro lee una fuerza $F$ de $4$N. 
+        \item ¿Qué relación hay entre la tensión $T$ y la fuerza $F$?
+    \end{enumerate}
+    \item Tres paquetes idénticos, cada uno con una masa de $1.66$kg, se han almacenado uno arriba del otro, como se muestra en la figura \ref{fig:dinamica_p5}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.15\linewidth]{images/dinamica/p_5.png}
+        \caption{Cajas idénticas apiladas.}
+        \label{fig:dinamica_p5}
+        \begin{enumerate}
+            \item Calcula la fuerza sobre el piso.
+            \item Dibuja las fuerzas que actúan en A
+            \item Dibuja las fuerzas que actúan en B
+        \end{enumerate}
+    \end{figure}
+    \item Una bolita de acero se encuentra sujeta a un electroiman vertical, como se ve en la figura. Identifica las tres fuerzas que actúan sobre la bolita. ¿Cual de las fuerzas tiene mayor magnitud?
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.15\linewidth]{images/dinamica/p_6.png}
+        \caption{Electroiman sosteniendo una bolita de acero.}
+        \label{fig:enter-label}
+    \end{figure}
+\end{enumerate}
+
+
+
+
+
+%\subsubsection{Peso y masa -- proporcionalidad}
+% Todos los objetos en cercanía de la Tierra son atraídos hacia el centro del planeta por la fuerza de gravedad. Mientras mas grande la masa del objeto mas grande será la atracción gravitacional. La fuerza de gravedad y la masa están íntimamente relacionadas, razón por la cual mucha gente confunde las dos cantidades, pero \textbf{no son lo mismo}.
+% Un astronauta que aluniza (aterriza en la luna), es afectado por una fuerza de gravedad mucho menor que la que sentimos nosotros aca en la Tierra. Sin embargo, la \textbf{masa} del astronauta no cambia, es exactamente la misma que la masa que tiene en la Tierra. 
+% Por otro lado, otra diferencia entre masa y peso, es que el peso es una cantidad \textbf{vectorial}, es decir, tiene \textbf{magnitud} y \textbf{dirección}, mientras que la masa es una cantidad \textbf{escalar}, y solo tiene \textbf{magnitud}.
+% Medimos la masa de diversos objetos con una balanza, y la magnitud del peso con un dinamómetros. La figura \ref{fig:M_fig2l} muestra los resultados de estas mediciones, graficando el \textbf{peso} como función de la \textbf{masa}.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\linewidth]{images/M_fig2.jpg}
+%     \caption{}
+%     \label{fig:M_fig2l}
+% \end{figure}
+% El gráfico es una linea recta que sale desde el origen. Esto significa que la fuerza F cambia a compás con la masa m, tal que el cociente $\frac{F}{m}$ tiene todo el tiempo el mismo valor (son directamente proporcionales). Podemos escribir:
+% \begin{equation}
+%     \frac{F}{m} = k \, \, \, \, \text{o} \, \, \, \,  F = k\cdot m
+% \end{equation}
+
+% \subsubsection{Factores de peso}
+
+
+% \subsection{La resultante en fuerzas paralelas}
+
+% \subsection{Equilibrio}
+
+% \subsection{Mas sobre fuerzas paralelas}
+
+% \subsection{Fricción}
+
+% \subsection{Problemas}
+
+% \section{  Energía}
+% \clearpage
+% \section{  Movimiento Lineal}
+% \clearpage
+% \section{  Mas sobre Fuerzas}
+
+% \firstword{H}{ere} is an example of a chapter reference: \secref{I}. \lipsum[1]
+
+% \lipsum[2-2] \textbf{An example of a centered equation:} \[
+%     t' = \frac{t - \frac{v}{c^2}x}{\sqrt{1 - \frac{v^2}{c^2}}}
+% \]
+
+% \lipsum[3-3] \textbf{An example of an inline equation:} $x = -\frac{\pm \sqrt{b^2 - 4ac}}{2a}$ \lipsum[4-4]. \textbf{Now we have a footnote}\footnote{Hello! Example equations down here also: $\ham \psi = \hat{E}\psi$.}.
+
+
+% % If I want to reference it, \figref{i}.
+
+% % Unnumbered equations:\eq{
+% %     x = y \\
+% %     y = z \\
+% %     x = z \\
+% % }
+
+% % Numbered group of equations:\eqnum{
+% %     a = b \\
+% %     b = c \\
+% %     a = c \\
+% % }
+
+\newpage
+\section{Energía}
+
+El concepto de \textbf{energía} es uno de los mas importantes en la física. Problemas relacionados con la energía son permanentemente discutidos en los medios de comunicación y forman parte de los problemas a nivel nacional e internacional. La energía y la transformación de la energía en distintas formas también aparecen en diversas situaciones de la vida cotidiana. 
+
+\subsection{Formas de energía y transformación de la energía}
+Durante el verano aprovechamos el calor del sol y nos exponemos a la energía que nos acerca la radiación solar. Durante los inviernos prendemos calefactores a gas o eléctricos para obtener energía térmica. Ingerimos comida para llenar el cuerpo de energía química. La empresa eléctrica nos manda la factura de la energía eléctrica consumida. Un tren o autobús que se mueve contiene energía cinética. El agua en un lago que se encuentra a cierta altura con respecto al nivel del mar contiene energía potencial. 
+
+Casi todo lo que pasa involucra una conversión de un tipo de energía en otro tipo de energía. 
+
+
+
+\subsection{Trabajo}
+
+\subsubsection{Definición de trabajo}
+Cuando levantamos unos platos del lavaplatos y los ponemos en una repisa mas alta, ¿que factores están afectando el trabajo que estas realizando?.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{images/energia/e1.png}
+   \caption{}
+    \label{fig:enter-label}
+\end{figure}
+Mientras mas platos levantemos y mientras mas alto se encuentre la repisa mas esfuerzo tenemos que hacer. En definitiva, el tamaño del trabajo depende de la fuerza F con la cual tenes que levantar y  desplazar los platos $\vec{\Delta s}$. En la física se ha se ha determinado expresar el trabajo como
+
+\begin{equation}
+    Trabajo = T = \vec{F} \cdot \vec{\Delta s}
+\end{equation}
+
+Las unidades de trabajo en el sistema internacional (SI) son \textbf{newton metro} (Nm), aunque lo mas común es utilizar el \textbf{joule} (J) para hablar de trabajo.
+Por lo tanto, se requiere tanto una fuerza como un desplazamiento para que una trabajo se lleve a cabo.
+Si uno levanta los platos con una fuerza de $20$N para ponerlos en un estante que se encuentra $0,75$m mas alto el trabajo realizado será:
+\[T=Fs=20N \cdot 0,75m = 15Nm = 15J\]
+Si uno tiene que utilizar el doble de fuerza, o la altura de los estantes se encuentra al doble de altura, el trabajo a utilizar será el doble. Todo esto suena razonable. La definición del trabajo para la física está bastante acorde con la utilización que le damos a la palabra \textbf{trabajo} en la vida cotidiana. 
+\vspace{0.5cm}
+\subsubsection{Trabajo y la transformación de la energía}
+\vspace{0.5cm}
+Cuando uno levanta los platos uno está transformando la energía. Energía química de los músculos se quema y los platos reciben energía cinética durante el movimiento, para finalmente transformarse en energía potencial al ponerlos en una posición mas alta. En el momento en que los platos son puestos en el estante su energía cinética vuelve a ser cero, pero su energía potencial es mas grande que la que tenían originalmente. A través de tu trabajo se ha transformado \textbf{energía química} en \textbf{energía potencial}.
+
+En la figura \ref{fig:e2} se mantiene un carrito comprimido contra un resorte. El carrito no se mueve y por esto su energía cinética es cero. El resorte tiene, en su estado de compresión, una especie de energía potencial acumulada. En el momento en que el carrito se libera, este es disparado (empujado) por el resorte. El trabajo es realizado hasta que el resorte se expande a su tamaño natural, y la fuerza que ejerce el resorte sobre el carrito se vuelve cero. Durante el trabajo, el resorte va perdiendo energía potencial mientras el carrito va ganando energía cinética. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/energia/e2.png}
+    \caption{}
+    \label{fig:e2}
+\end{figure}
+
+En los dos casos que hemos visto el trabajo estaba acoplado con una transformación de energía. Así es siempre. El trabajo se encarga de transformar energía de un tipo a una de otro tipo. El trabajo nos dice cuanta energía se transforma. 
+
+Podemos concluir que: \textbf{cada trabajo conlleva una transformación de energía equivalente al trabajo realizado}. Esto implica:
+\begin{itemize}
+    \item La energía tiene las mismas unidades de medición que el trabajo, es decir Joules (J).
+    \item A través de medir/calcular el trabajo podemos determinar el tamaño/cantidad de la transformación de energía.
+\end{itemize}
+
+En el caso en el que levantamos los platos para ponerlos en un estante, los platos han aumentado su energía potencial. Si el trabajo en levantar los platos $\vec{F} \cdot \vec{\Delta s}$ es de $15$J, podemos concluir que la energía potencial ha aumentado en $15$J.
+\vspace{0.5cm}
+\subsubsection{Ejemplos}
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item Tiras de un carrito con ruedas libre de fricciones con una fuerza horizontal de $2.3$N una distancia de $0.85$m a lo largo del piso. ¿Que tan grande es el trabajo que realizaste? y ¿que tipo de transformación de energía transcurre?
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{images/energia/e3.png}
+        %\caption{Caption}
+        \label{fig:enter-label}
+    \end{figure}
+    \textbf{Respuesta:} El peso y la fuerza normal que actúan sobre el carrito son perpendiculares a la dirección del movimiento de este, y por eso no realizan trabajo. El único trabajo es realizado por la fuerza que tira del carro: 
+    \[T=Fs=2.3N \cdot 0.85m =2.0 J\]
+    $2.0$J de  tu energía química se transformaron en energía cinética del carrito.
+    \item Arrastras, empujando un cubo de madera que se desliza (una vez que lo soltaste) $0.85$m a lo largo de una mesa hasta que se para. La fuerza de fricción que detuvo al carrito durante la distancia mencionada fue de $2.3$N. ¿Cuanto trabajo se realizó durante el frenado? y  ¿Cuan grande fue la transformación de energía?
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{images/energia/Captura desde 2025-05-12 23-36-15.png}
+        %\caption{Caption}
+        \label{fig:enter-label}
+    \end{figure}
+    \textbf{Respuesta:} La fuerza de fricción fue constante durante todo el frenado y fue única fuerza que realizó trabajo: 
+    \[T=F\Delta s=2.3N \cdot 0.85m = 2.0J\]
+    Debido a que la fuerza de fricción frena el movimiento, la energía cinética desaparece, transformándose en energía térmica durante el frenado. Los $2.0$J se han transformado en energía térmica calentando la mesa y la madera.
+    \item Tiras del mismo cubo de madera con una fuerza horizontal de $2.3$N manteniendo la velocidad de este constante durante los $0.85$m a lo largo de la mesa. Discute la transformación de energía y el trabajo en este contexto.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{images/energia/Captura desde 2025-05-12 23-30-08.png}
+        %\caption{Caption}
+        \label{fig:enter-label}
+    \end{figure}
+    \textbf{Respuesta:} Debido a que el movimiento es uniforme, la fuerza de fricción tiene que ser igual, en magnitud, pero opuesta en sentido a la fuerza ejercida para tirar.  El trabajo realizado para tirar del cubo es: \[T=Fs=2.3N\cdot0.85m= 2,0J\]. Energía química se transformo en energía cinética del cubo de madera. A la misma vez la fuerza de fricción realizó un trabajo sobre el cubo de madera que transformó energía cinética en energía térmica. El resultado general es que $2.0J$ de energía química se transformaron en energía térmica.
+    \item Tiras una pelota que tiene un peso de $1.8$N hacia arriba. Una vez que la pelota deja la mano, esta sube $2.0$m. ¿Que trabajo se realiza y quien lo hace?¿Que transformación de energía transcurre durante el movimiento?. Se puede despreciar la fricción que realiza el aire.
+    
+    \textbf{Respuesta:} La única fuerza que actúa sobre la pelota es el peso. El trabajo que realiza el peso es \[T=F\Delta S =  1.8 N \cdot 2.0 m = 3.6 J\]. El peso frena el movimiento de la pelota, hasta que esta llega a los $2.0$m, donde se detiene para cambiar de dirección. En este último punto la energía cinética es cero, mientras que la energía potencial es máxima. una transformación de $3.6$J se transformaron de energía cinética a energía potencial. 
+    \item Moves la misma pelota del caso anterior, pero esta vez la trasladas hasta los $2.0$m de altura a una velocidad constante. Discutí el trabajo y la transformación de energía para este caso. 
+
+    \textbf{Respuesta:} Levantas la pelota hacia arriba con una fuerza de $1.8$N. El trabajo para levantar la pelota es \[T= Fs = 1.8 N \cdot 2.0 m = 3.6 J\]. El movimiento de la pelota aumentaría su velocidad si no estuviera actuando el peso. Hubo transformación de energía química a energía potencial. 
+\end{itemize}
+\begin{tcolorbox}[colframe=gray, colback=white, coltitle=white, sharp corners, title=Problema para estudiar]
+
+a) ¿cuanto trabajo hay que realizar para tirar una caja horzontalmente una distancia de $3.0$m a velocidad constante por el suelo si la fuerza de fricción es de $80$N?
+
+b) Una piedra que cae pierde energía potencial y adquiere energía cinética. ¿Que tan grande es esta transformación de energía si el peso de la piedra es de $15$N y la altura que cae es de $2.0$m?
+
+Respuestas:
+
+a) $0.24$kJ, b) Igual de grande que el trabajo realizado por el peso, el cual es $30$J.
+ 
+\end{tcolorbox}
+
+%\subsection{Trabajo muscular}
+
+%\subsection{Energía potencial}
+
+\subsection{Energía cinética}
+Un tren que se mueve con cierta rapidez tiene mayor energía cinética que un auto que se mueve a la misma rapidez. Esto se debe, naturalmente, a que el tren tiene mayor masa que el auto. La masa es una de las cantidades que tiene significado cuando hablamos de la energía cinética de un objeto en movimiento. La rapidez también afecta a la energía cinética, mientras mayor sea la rapidez mayor será la energía cinética del objeto. 
+
+La masa y la rapidez son determinantes en cuanto a la energía cinética de un objeto. ¿Que tan grande es la energía cinética de un auto con una masa de $1000$kg que se mueve con una rapidez de 90 km/h? Tiene que ser posible encontrar una ecuación que relaciones la energía cinética de un objeto con su masa y su rapidez. 
+
+En las página siguientes vamos a describir dos experimentos que nos permiten encontrar la relación entre la energía cinética con la masa y la rapidez de un objeto. Esta revisión nos permite ver como se piensa en la física para encontrar de manera experimental tales relaciones.
+
+\vspace{0.5cm}
+\subsubsection{Relación entre energía cinética con la masa y la rapidez}
+\vspace{0.5cm}
+
+Partimos de la hipótesis de que la masa $m$ y la rapidez $v$ determinan que tan grande es la energía cinética $E_k$ de un objeto. Queremos deducir como es esa relación entre las variables $m$, $v$ con $E_k$, y para esto vamos a realizar dos experimentos (inspecciones).
+
+\begin{enumerate}
+    \item Para ver como afecta, unicamente, la masa vamos a determinar la energía cinética de algunos objetos que se mueven a una misma rapidez.
+    \item Para ver como afecta la rapidez vamos a medir $E_k$ para un mismo objeto (masa constante) a distintas rapideces. 
+\end{enumerate}
+
+\vspace{0.5cm}
+\textbf{Experimento 1:} Empujamos tres objetos con distintas masas, $m_1$, $m_2$ y $m_3$ a una misma rapidez sobre una superficie plana, y dejamos que la fuerza de fricción los frene. 
+\vspace{0.5cm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/energia/evsm.png}
+    \caption{}
+    \label{fig:experimento1}
+\end{figure}
+
+Utilizamos el conocimiento, o suposición de que durante el frenado la energía cinética de los tres objetos se transforma, a través del trabajo que realiza la fricción, en energía térmica durante el proceso de frenado. 
+
+Medimos las distancias de frenado, $s_1$, $s_2$ y $s_3$. Luego medimos las tres fuerzas de fricción correspondientes utilizando un dinamómetro para tirar cada uno de los objetos de manera separada. De esta manera tenemos las tres fuerzas de fricción medidas, $F_1$, $F_2$ y $F_3$. Ahora podemos calcular el trabajo realizado por cada una de las fuerzas de fricción de la siguiente manera:
+\[T_1 = F_1 \cdot s_1,\quad T_2 = F_2 \cdot s_2,\quad T_3 = F_3 \cdot s_3\]
+Sabemos que el trabajo realizado por cada una de las fuerzas de fricción es equivalente a la transformación de energía, y por ende a la energía cinética de los objetos, respectivamente
+\[E_k = T = F \cdot s\]
+Hacemos los gráficos los trabajos (energía cinética) en función de las masas
+
+A partir de analizar el gráfico obtenido podemos ver que hay una relación lineal entre la energía cinética $E_k$ y la masa $m$, es decir, la energía cinética es "directamente proporcional" a la masa. 
+
+\vspace{0.5cm}
+\textbf{Experimento 2:} 
+\vspace{0.5cm}
+
+En este experimento empujamos un solo ladrillo y registramos su movimiento. Si medimos su rapidez instantánea (v) y su distancia de frenado (s) a cada instante registrado, podemos calcular su energía cinética correspondiente a cada instante de la misma manera que en el experimento anterior, es decir \[E_k = F \cdot s\]. El resultado nos dará que la velocidad afecta a la energía cinética de mayor manera que la masa: 
+\begin{equation}
+    E_k = k_2 v^2
+\end{equation}
+
+Si juntamos los dos resultados tenemos que 
+
+\begin{equation}
+    E_k = k \cdot m \cdot v^2
+\end{equation}
+
+El valor de la constante $k$ lo podemos obtener si usamos os valores de $E_k$, $m$ y $v^2$ del experimento 2 en la ecuación y podemos que este daría que $k= 1/2$. 
+En definitiva, podemos, mediante experimentos, determinar que la energía cinética tiene la siguiente forma
+
+\begin{equation}
+    E_k = \frac{1}{2} m v^2
+\end{equation}
+
+
+
+%\subsection{Principio de energía}
+
+\subsection{Problemas}
+\begin{enumerate}
+    \item ¿Que trabajo se realiza cuando un libro de $0.50$kg se levanta $2.0$m de altura?
+    \item A través de la comida una persona recibe una energía de $\sim 10$MJ por día. Supone que se utiliza toda esta energía para levantar una piedra de 1 tonelada de masa. ¿Que altura se puede levantar la piedra?
+    \item ¿Cuanta energía se le transfiere a una valija de viaje de $15$kg cuando
+    \begin{enumerate}
+        \item uno la tiene quieta esperando al colectivo
+        \item uno corre con ella $10$m  durante $2.0$ segundos a velocidad constante para alcanzar al colectivo. 
+        \item Uno levanta la valija unos $0.80$m cuando se sube al colectivo.
+    \end{enumerate}
+            \item La estación turística en Kebnekajse se encuentra a $690$m con respecto al nivel del mar (nm). La cima del cerro tiene una altura de $2111$m. Un escalador de $85$kg de masa trepa a la cima desde la estación
+        \begin{enumerate}
+            \item ¿que energía potencial tiene cuando llega a la cima si elegimos nuestro sistema de referencia tal que el cero esté a nivel del mar?
+            \item ¿y si el cero lo elegimos en la posición de la estación?
+            \item ¿Cómo cambia la energía potencial durante el camino a la cima?
+        \end{enumerate}
+        \item ¿Cuanto vale la energía cinética de un auto que viaja a 90km/h y tiene una masa de 1000kg?
+     %   \item 5.8
+        \item Dos personas, A con una mas de $70$kg y B con una masa de $30$kg se encuentran sentadas en distintos escalones de un escalera larga. A se encuentra a $3.0$m y B a $6.0$m sobre el piso. 
+        \begin{enumerate}
+            \item ¿Cual de las dos personas tiene mayor energía potencial en relación al piso?
+            \item B sube un poco mas y se vuelve a sentar. A se queda en el mismo lugar. ¿Cuanto tiene que subir B para adquirir la misma energía potencial que A?
+        \end{enumerate}
+        \item Un carrito pequeño, que junto con su carga tiene una masa de $520$kg, se tira (hacia arriba) por una pendiente de $12$m de largo. Al final de la pendiente la altura es de $1.5$m sobre el nivel del suelo. ¿Que tan grande tiene que ser la fuerza que tira al carrito si despreciamos la fricción?
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/energia/Energia_5.9.png}
+           % \caption{Caption}
+            \label{fig:enter-label}
+        \end{figure}
+        \item Un marco metálico liviano tiene cuatro esferas pesadas unidas en cada esquina. Cada una de las esferas tiene una masa de $6.0$kg. Calcula cuanto trabajo se necesita realizar para levantar el marco desde la posición horizontal a la vertical como se muestra en la figura.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/energia/E-5.11.png}
+           % \caption{Caption}
+            \label{fig:enter-label}
+        \end{figure}
+        \item Dos cajas idénticas se encuentran apoyadas sobre el piso como se muestra en la figura. ¿Tiene una de las caja mas energía potencial que la otra?. Justifica tu respuesta.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/energia/E-5.12.png}
+           % \caption{Caption}
+            \label{fig:enter-label}
+        \end{figure}
+        \item Un cubo con masa $0.60$kg se desliza sobre una pista ABC como se ve en la figura. La pista no aporta fricción excepto en la zona B. El cubo inicia su movimiento sin ser empujado en el punto A. Este llega al punto C y luego regresa. 
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\linewidth]{images/energia/E-5.14.png}
+            %\caption{Caption}
+            \label{fig:enter-label}
+        \end{figure}
+        \begin{enumerate}
+            \item ¿Que tanta energía se transforma en fricción en la región B?
+            \item Asume que la misma cantidad de energía se transforma en calor al pasar por B por segunda vez. ¿Que tan alto llega el cubo luego de la segunda pasada por B?
+        \end{enumerate}
+        \item Una masa de $100$kg se deja caer sobre una estaca desde una altura de $1.25$m (como se ve en la figura). La estaca se clava $0.25$m en el suelo.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/energia/E-5.16.png}
+            %\caption{Caption}
+            \label{fig:enter-label}
+        \end{figure}
+        \begin{enumerate}
+            \item ¿Cuanto disminuyo la energía potencial de la masa cuando la estaca se hundió?
+            \item ¿En que tipo de energía se transformó a energía potencial?
+            \item ¿Cuanto trabajo realizó la masa?
+            \item ¿Cuanta fuerza hizo la masa sobre la estaca?
+        \end{enumerate}
+        \item Calcula tu energía cinética si corres con una rapidez de $5$m/s
+        \item Un auto con una masa de $800$kg arranca y aumenta su rapidez de $0$ a $25$m/s. 
+        \begin{enumerate}
+            \item ¿Cuanto aumenta su energía cinética durante el cambio de rapidez de $0$ a $5$m/s?
+            \item ¿Cuanto aumenta su energía cinética durante el cambio de rapidez de $20$ a $25$m/s?
+        \end{enumerate}
+        \item Dos pesas, con masas $m_1=1.0$kg y $m_2=2.0$kg, se cuelgan como se ve en la figura. Ambas se mueven con una rapidez de $v=0.80$m/s. ¿Que tan grande es la energía cinética de las dos masas juntas?
+        \item Un auto que viaja a $10$m/s frena por completo en una distancia de $20$m. El auto tiene una masa de $1.2\cdot 10^3$kg.
+        \begin{enumerate}
+            \item ¿Cuanto trabajo ha realizado la fuerza de frenado?
+            \item ¿Cuanto fue la fuerza de frenado?
+            \item ¿Que tan larga será la distancia de frenado si la rapidez inicial del auto es el doble?
+        \end{enumerate}
+        \item Una piedra se tira derecho para arriba y lleg a una altura de $11.5$m sobre el punto de partida P antes de comenzar a caer nuevamente. No hay rozamiento con el aire. 
+        \begin{enumerate}
+            \item[a)] ¿Cuanto vale la velocidad de partida de la piedra?
+        \end{enumerate}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/energia/E-5.24.png}
+           % \caption{Caption}
+            \label{fig:enter-label}
+        \end{figure}
+        La piedra se vuelve a tirar, pero esta vez de costado. Su rapidez de salida es de $15$m/s. Esta se mueve como se ve en la figura. El punto mas alto que alcanza la piedra es $8.0$m
+        \begin{enumerate}
+            \item[b)] ¿Que rapidez tiene la piedra en el punto mas alto? 
+            \item[c)] ¿A que altura tiene la piedra una rapidez de $10$m/s?
+        \end{enumerate}
+   %     \item 5.25
+   %     \item 5.27
+        \item Un péndulo se suelta desde la posición que muestra la figura. ¿Que tan grande es la rapidez máxima del péndulo en el movimiento que sigue?
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/energia/E-5.30.png}
+           % \caption{Caption}
+            \label{fig:enter-label}
+        \end{figure}
+   %     \item 5.35
+\end{enumerate}
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%  Electricidad                  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Cargas Eléctricas}
+
+Una caída de un rayo muestra, de una manera dramática, que existen cargas eléctricas. Pero, también cuando apretamos un dedo contra una mesa y siente una resistencia son las cargas eléctricas del material que se hacen conocer.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/cargas/descarga_electrica.png}
+  %  \caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
+Los fenómenos eléctricos simples han sido conocidos por la humanidad desde hace rato. Pero el uso de la electricidad es mucho mas reciente. A fines de 1800 se construyo el primer generador eléctricos con el fin de lograr la iluminación artificial.  
+
+El avance es enorme desde la fabricación de la primera lampara de filamento a la televisión y las computadoras actuales. Junto con el desarrollo tecnológico, la gente se ha hecho mas dependiente de la electricidad. Hoy es difícil imaginar un mundo sin electricidad. Estos últimos tiempos el desarrollo en la materia ha sido exponencial.
+
+\subsection{Fuerzas entre objetos cargados eléctricamente}
+
+\vspace{0.5cm}
+\textbf{Repulsión y atracción:}
+\vspace{0.5cm}
+
+Varios fenómenos en la vida cotidiana muestran como materiales cargados eléctricamente se afectan mutuamente. Cuando uno se peina el pelo se carga el pelo y el peine. Si uno luego acerca el peine al pelo sin tocarlo, este se levanta hacia el peine. Un globo que se frota contra el pelo se puede pegar contra la pared. En ambos casos son fuerzas eléctricas las que actúan. Este tipo de cargas y descargas pueden afectar de manera negativa a los circuitos integrados de las computadoras. 
+
+Un globo que cuelga de un hilo se frota con un paño,. Si luego se acerca el paño al globo este será atraído hacia el paño. Si dos globos se frotan de la misma manera y se cuelgan uno al lado del otros estos se van a repeler. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/cargas/globos.png}
+ %   \caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+%%%%% AGREGAR FIGURA:
+\vspace{0.5cm}
+\textbf{Cargas positivas y negativas}
+\vspace{0.5cm}
+
+Globos, varas de plástico y de vidrio, peines y muchos otros objetos pueden ser cargados eléctricamente mediante el frotamiento con otro objeto. 
+
+Eso que frota y lo que se frota obtienen distintas cargas. Solo dos tipos de cargas aparecen. Uno se conoce como carga negativa y el otro como carga positiva. Un estado descargado se conoce como neutral. 
+
+Una varilla de vidrio que se frota obtiene carga positiva, una vara de plástico negativa. Dos objetos con un mismo tipo de carga se repelen, mientras que si tienen cargas distintas se atraen. 
+
+\vspace{0.5cm}
+¿Que pasa cuando frota una varilla de plástico con una manta de hilo?
+\vspace{0.5cm}
+
+Cuando dos superficies se frotan entre si las capas superficiales de átomos de los objetos son afectadas. Pero en las capas externas de los átomos solo hay electrones con carga negativa. Es natural pensar que estos electrones durante el frotados son liberados debido al contacto cercano y se mueven de un objeto a otro. Investigaciones han mostrado que estos es así. 
+
+Debido a que la vara de plástico obtiene cargas negativa los electrones de la tela deben haberse movido hacia la vara. Por esto la tela ha sufrido una perdida de electrones, es decir, la tela tiene ahora carga positiva. Uno puede comprobar que ambos objetos tienen cargas distintas después de ser frotadas entres si al ver que estos se atraen. 
+
+\textbf{Resumiendo:} Un objeto con carga positiva tiene un faltante de electrones, mientras que un objetos con carga negativa tiene un exceso de electrones. 
+
+
+\subsection{Aislantes y conductores}
+Todos los metales son conductores, algunos mejores que otros. Los polímeros (los plásticos son parte de la familia de los polímeros), en general son aislantes eléctricos, así como los cerámicos (los vidrios son parte de la familia de los cerámicos). A diferencia de los aislantes eléctricos, los conductores contienen electrones libres que pueden moverse libremente por el solido. Si hay exceso o faltante de electrones en alguna parte del material, los electrones se mueven rápidamente para compensar el exceso o faltante en todo el material conductor. 
+Hay un tercer tipo de material, los semi conductores, los cuales juegan un rol muy importante en la electrónica. Los semiconductores adoptan un estado intermedio entre los conductores y los aislantes. 
+
+Si un material se encuentra cargado eléctricamente, se puede demostrar con ayuda de un electroscopio. En este instrumento hay una varilla metálica aislada del ambiente, donde la parte inferior contiene dos finas placas que se pueden mover fácilmente, dos hojas metálicas, como se ve en la figura \ref{fig:bolita}. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/cargas/electroscope.png}
+   \caption{}
+    \label{fig:bolita}
+\end{figure}
+Cuando el electroscopio se encuentra descargado, las hojas cuelgan verticalmente hacia abajo. Pero si la pelotita metálica se toca con una vara plástica cargada, las hojas se separan. 
+\vspace{0.5cm}
+¿por que?
+\vspace{0.5cm}
+Los electrones de la vara cargada negativamente (o positivamente) son transferidos al metal y se transportan inmediatamente a las hojas. Estas se repelen ya que adquieren una misma carga. Mientras mayor la carga mayor será la separación entre las hojas metálicas. 
+
+Un electroscopio se puede utilizar para definir si un material es conductor o no. El electroscopio se carga y si se toca con un metal descargado, las hojas se juntan al poder transferir los electrones excedentes al metal y redistribuir la carga. Mientras mas grande el metal, mas disminuye la separación entre las hojas. Hay mayor transferencia de electrones del electroscopio a la pieza metálica. Si tocamos el electroscopio cargado con un aislante, entonces las hojas casi no se mueven, no pueden deshacerse de sus electrones excedentes. 
+\vspace{0.5cm}
+\textbf{Conectar a Tierra}
+\vspace{0.5cm}
+Si conectamos la esfera conductora mas grande que exista al electroscopio, prácticamente todos los electrones de exceso podrán transferirse a la esfera y por ende el electroscopio se neutraliza. La esfera mas grande que tenemos es la Tierra. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/cargas/simb_tierra.png}
+   \caption{}
+    \label{fig:bolita}
+\end{figure}
+
+
+
+
+
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{images/cargas/bolita_al.png}
+%   \caption{}
+%    \label{fig:bolita}
+%\end{figure}
+
+\subsection{Medición de cargas}
+La unidad de medición de las cargas en el sistema internacional (SI) se llama Coulomb (C). Dentro de las unidades básicas hay una para medir la corriente y se llama Ampere (A). La relación entre estas dos cantidades las veremos mas adelante. 
+La figura \ref{fig:medicion} muestra un método para medir las cargas. El conductor se descarga a partir de conectarlo a Tierra. En la conexión a Tierra se encuentra un instrumento especial que sirve para registrar el tamaño y el signo de la carga que pasa del objeto cargado a la Tierra.  
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/cargas/medidor_sonda.png}
+   \caption{}
+    \label{fig:medicion}
+\end{figure}
+Hay un limite para la cantidad de carga que se le puede dar a un objeto. Si se supera este límite se produce una chispa entre el objeto cargado y el ambiente, y el objeto se descarga. 
+
+\begin{tcolorbox}[colframe=gray, colback=white, coltitle=white, sharp corners, title=Problema para estudiar]
+
+Una bolita de metal con una carga de $2.0$nC se acerca por un instante y se pone en contacto con otra bolita idéntica con una carga de $-3.0$nC. ¿Que tan grande será la carga en cada una de las bolitas luego de estar en contacto entre ellas?
+
+Respuestas:
+
+a) $-0.5$nC.
+ 
+\end{tcolorbox}
+
+
+\subsection{Influencia eléctrica}
+Uno puede hacer que las cargas se muevan en un material conductor sin tocar el conductor. Asumamos que tenemos dos varillas conductoras descargadas apoyadas sobre una superficie aislante. Inicialmente las dos varillas se encuentran en contacto entre si, formando un único conductor. Colocamos una varilla de vidrio a una distancia de los conductores como se ve en la figura a). Los electrones móviles en el conductor son atraídos hacia la varilla de vidrio. La parte del conductor mas cercana a la varilla de vidrio adquiere un excedente de electrones y por ende una carga negativa, mientras que la parte mas lejana se encuentra con un faltante de electrones y por ende carga positiva. Separamos las dos varillas antes de alejar la varilla de vidrio, tal que la varilla que estaba mas cercana a la varilla de vidrio se queda con una carga negativa, mientras que la otra con una positiva. 
+Ahora alejamos la varilla de vidrio, y las cargas en las varillas separadas de los conductores se redistribuyen, una con exceso de carga (negativa) y la otra con faltante de electrones (positiva). Este tipo de redistribución de cargas por cercanía de otro objeto se conoce como carga por influencia. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/cargas/influ.png}
+   \caption{}
+    \label{fig:medicion}
+\end{figure}
+El efecto de influencia da lugar a una fuerza de atracción entre un objeto cargado y un objeto conductor descargado.
+Algo parecido ocurre, pero a con una fuerza de atracción menor, entre un material aislante y un material cargado. En el aislante las cargas positivas o negativas no pueden escaparse de los átomos a los cuales pertenecen, pero pueden moverse un poquito, generando una pequeña influencia. 
+
+\begin{tcolorbox}[colframe=gray, colback=white, coltitle=white, sharp corners, title=Problema para estudiar]
+
+Si uno acerca una varilla de vidrio cargada a un electroscopio, esta puede afectar al electroscopio aunque no se encuentre en contacto. ¿por que?
+
+Respuestas: Por la influencia de la carga de la varilla de vidrio, se genera en el conductor del electroscopio una redistribución de cargas, tal que las hojas de la parte inferior quedan cargadas positivamente y por ende se repelen.
+
+a) $-0.5$nC.
+ 
+\end{tcolorbox}
+
+\subsection{Ley de Coulomb}
+\subsubsection{Fuerza entre dos cargas puntuales}
+Esta parte se trata  de las fuerzas que ejercen mutuamente dos bolitas cargadas.
+Asumimos que las bolitas (esferas) no se encuentran cerca la una de la otra, tal que las cargas no se puedan redistribuir por la influencia de una sobre la otra. Es decir, la carga en cada bolita/partícula se encuentra homogéneamente distribuida sobre su superficie y la influencia de una bolita sobre la otra se puede suponer como si las cargas estuvieran concentradas en el centro de cada una. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Electricidad/Electricidad_1.png}
+    %\caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+Determinar las fuerzas que actúan en este sistema no es un problema. Estas dependen solo de si las cargas de las respectivas bolitas/partículas tienen el mismo signo o no (como se ve en la figura). Las fuerzas sobre las bolitas son las fuerzas de "acción" y de "reacción" (tercera Ley de Newton), y por eso son de la misma magnitud pero en sentidos opuestos. Los tamaños (magnitudes) de las fuerzas dependen de la distancia entre las cargas (bolitas) y el tamaño de las cargas. 
+
+\textbf{¿Como se puede ver la relación entre las fuerzas y sus magnitudes?}
+
+\textbf{Dependencia de las fuerzas en la distancia}
+
+La relación de las fuerzas con la distancia entre las cargas (bolitas) fue estudiada por el físico  Charles Coulomb en 1785. En su experimento, Coulomb utilizó una balanza de torsión que muestra la fuerza de giro. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{images/Electricidad/Electricidad_2a.png}
+    %\caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+
+Cuando una bolita A cargada afecta a otra bolita B libre de movimiento colgada, esta gira hasta una pos de acuerdo a la fuerza que la afecta. Mientras mayor sea la fuerza, mas grande sera el angulo de giro. Mediante la medición del angulo, Coulomb pudo establecer la fuerza eléctrica. Con este experimento se pudo determinar la dependencia de la fuerza en la distancia.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{images/Electricidad/Electricidad_2b.png}
+    %\caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
+Coulomb utilizó ambos tipos de cargas, positivas y negativas, y encontró que la fuerza $F$ es inversamente proporcional con el cuadrado de la distancia entre las cargas. 
+
+\begin{equation}
+    F = K \frac{1}{r^2}
+\end{equation}
+
+\textbf{Dependencia de las fuerzas en el tamaño de las cargas}
+
+Hasta aquí sabemos la relación de las fuerzas entre dos partículas cargadas con la distancia entre ellas. Pero, ¿como cambian las fuerzas con respecto a los tamaños de las cargas en cada partícula?
+
+Pensemos que dos bolitas pequeñas con cargas $Q_1$ y $Q_2$ se afectan mutuamente con una fuerza $F$.
+
+Si duplicamos la magnitud de la carga en A agregando una bolita mas con carga $Q_1$ tenemos que
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{images/Electricidad/Electricidad_3.png}
+    %\caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
+La nueva bolita afecta también a la bolita B con carga $Q_2$, tal que ahora la fuerza que actúa sobre $Q_2$ es el doble de grande, es decir $2F$. Un aumento de la carga en A al doble resulta en una duplicación de la fuerza que actúa sobre la bolita B, o las fuerzas que actúan mutuamente entre A y B. La fuerza $F$ es proporcional a $Q_1$.
+
+Se podría aumentar la carga $Q_2$ en lugar de $Q_1$, y el mismo razonamiento que recién se hizo nos llevaría a que la fuerza debería ser proporcional a $Q_2$. Ambas relaciones se pueden confirmar experimentalmente. 
+
+\textbf{Ley de Coulomb}
+
+En resumen, podemos decir que: 
+La fuerza $F$ entre dos cargas puntuales $Q_1$ y $Q_2$ separadas por una distancia $r$ entre sí es proporcional a ambas cargas $Q_1$ y $Q_2$, e inversamente proporcional a la distancia entre las cargas al cuadrado ($r^2$). La relación matemática es la siguiente:
+
+\begin{equation}
+     F = K \frac{Q_1 Q_2}{r^2}
+\end{equation}
+
+Esta ecuación ha recibido el nombre de \textbf{Ley de Coulomb}, y por esta razón las fuerzas entre dos cargas se conoce como \textbf{fuerzas de Coulomb}. 
+El valor de la constante de proporcionalidad  $K$ se puede calcular si uno mide las cantidades $F$, $r$, $Q_1$ y $Q_2$ cuando dos objetos pequeños cargados se afectan mutuamente. El valor de la constante es:
+
+\begin{equation}
+    K = \frac{F r^2}{Q_1 Q_2} = 8,988\cdot 10 ^9 \frac{N m^2}{C^2}
+\end{equation}
+
+La ley de Coulomb describe una de las fuerzas fundamentales de la naturaleza, la fuerza eléctrica entre dos cargas puntuales. Todos los fenómenos eléctricos son causa de las fuerzas entre partículas cargadas. Por ejemplo, la caída de un rayo, el funcionamiento de una heladera eléctrica, la producción de calor durante la combustión y los cálculos que realiza una calculadora, por mencionar algunos nada mas. 
+
+\textbf{Ejemplo:}
+Una bolita de plástico A con una masa de $m=0.20g$ cargada es atraída por una esfera metálica K que se encuentra conectada a un generador de cinta. La carga en K es $Q_2=2\mu C$. La bolita plástica A se encuentra atada a una mesa con un hilo aislante. ¿Qué tan grande debe ser la carga $Q_1$ en K para que se encuentre en equilibrio de fuerzas? La carga en K se puede pensar como si estuviera concentrada en el centro de la esfera a una distancia $r=30 cm$ sobre A.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{images/Electricidad/Electricidad_4.png}
+    %\caption{Caption}
+    \label{fig:enter-label}
+\end{figure}
+
+\textbf{Solución}
+La fuerza de atracción F en A tiene que ser, por lo menos, igual de grande que el peso mg de A. Se puede adaptar la Ley de Coulomb de la siguiente manera:
+
+\begin{equation}
+    k\frac{Q_1\cdot Q_2}{r^2}=mg
+\end{equation}
+
+ Despejamos la carga $Q_1$
+
+ \begin{equation}
+     Q_1=\frac{mg r^2}{K Q_2} = \frac{0.20 \cdot 10^{-3} kg \cdot 9.8 N/kg \cdot 0.30^2 m^2 } {9.0\cdot10^9 Nm^2/C^2 \cdot 1.0\cdot 10^{-6}C} = 20nC
+ \end{equation}
+
+ Para estar en equilibrio de fuerzas la carga negativa en A debe ser por lo menos $20nC$
+
+\begin{tcolorbox}[colframe=gray, colback=white, coltitle=white, sharp corners, title=Problema para estudiar]
+
+Si uno pudiera quitar el uno porciento de los electrones en un de cobre, este obtendría  una carga positiva de $0.4$kC. ¿Que tan grande sería la fuerza actuante si dos pedazos de cobre así estuvieran separados por 100km?
+
+Respuestas:
+
+a) $0.14MN$. Esto es equivalente al peso de un camión de 14 toneladas.
+ 
+\end{tcolorbox}
+
+%\subsection{Invariabilidad de las cargas}
+
+%\subsection{Campos de fuerzas}
+
+%\subsection{Energía eléctrica}
+
+%\subsection{Tensión eléctrica}
+
+
+\subsection{Problemas}
+\begin{enumerate}
+ \item Cuando una persona con pelo largo se peina uno puede observar que parte de los pelos se separan y otros son atraídos al peine. Explica esta observación.
+ \item Un átomo de aluminio tiene una masa de $4.5\cdot 10^{-23}$g. Una bolita de aluminio con radio de $2.0$cm tiene una masa de $90$g. a) ¿Cuantos átomos hay en esta bolita?
+ Uno puede suponer que cada átomo aporta un electrón a los electrones conductores. Cada electrón tiene una carga de $0.16$aC. La bolita se carga negativamente tal que su carga total es de $10$nC. b) ¿Cuántos electrones de exceso ha ganado la bolita?, c)  ¿Cuántos de los electrones conductores de la bolita van en un electrón excedente?
+ \item Una bolita pequeña cargada se encuentra en la cercanía de una bolita grande, cuya carga es 100 veces mas grande. En la figura se muestra la fuerza que actúa sobre la bolita pequeña. ¿Que tamaño y que dirección tiene la fuerza que actúa sobre la bolita grande?
+ \item En la tabla se muestran las cargas $Q_1$, $Q_2$, las distancia $r$ entre las cargas y las fuerzas $F$. Calcula las cantidades faltantes.
+ 
+ \begin{table}[H]
+     \centering
+     \begin{tabular}{|c|c|c|c|c|}
+      \hline
+         $Q_1$ & $Q_2$ & $r$  & $F$ & atracción/repulsión\\
+         \hline 
+          \hline
+         $2.00$nC & $5.00$nC  & $0.0300$m  &   & \\
+          \hline
+         $1.67\mu$C &$-0.78\mu$C& $12$cm   &  & \\
+          \hline
+         $3.5$nC &  & $3.5$mm & $9.0$mN  & atracción \\
+          \hline
+          &$1.5$nC  & $12$mm  & $0.49$mN & repulsión \\
+           \hline
+         $20$nC &$0.0120\mu$C  &  & $3.5$mN & \\
+          \hline
+     \end{tabular}
+%     \caption{Caption}
+     \label{tab:my_label}
+ \end{table}
+ \item De acuerdo a la Ley de Coulomb se sabe que la fuerza $F$ entre dos cargas $Q_1$ y $Q_2$ a una distancia $r$ es \[kQ_1Q_2/r^2 \] ¿Cuanto cambia la fuerza si:
+ \begin{itemize}
+     \item $Q_1$ aumenta su carga al doble mientras que $Q_2$ no se toca?
+     \item $Q_2$ aumenta su carga al doble mientras que $Q_1$ no se toca?
+     \item $r$ se duplica pero $Q_1$ y $Q_2$ no se tocan'
+ \end{itemize}
+ \item La figura muestra dos partículas distintas cargas y variación en la distancia. Las cargas y la distancia entre ellas se muestran en unidades arbitrarias. Completa las figuras con los vectores respetando la escala mostrada en la primer figura.
+ \begin{figure}[H]
+     \centering
+     \includegraphics[width=0.7\linewidth]{images/cargas/p1.png}
+%     \caption{Caption}
+     \label{fig:enter-label}
+ \end{figure}
+% \includegraphics[0.6\textwidth]{images/cargas/p1.png}
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%  Electricidad                  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section{Tensión, Corriente y Efecto}
+
+¿Como se convierte la energía en un circuito eléctrico? y ¿de donde viene?
+
+\subsection{Fuentes de tensión y circuitos eléctricos}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Electricidad/campE.png}
+   % \caption{Caption}
+    \label{fig:placeholder}
+\end{figure}
+Si uno acopla dos esferas cargadas, con cargas opuestas,  por intermedio de un hilo conductor o cable nada espectacular ocurre. Durante un tiempo corto, electrones de la esfera con carga negativa se mueven, producto del campo eléctrico, hacia la esfera con carga positiva, hasta que se equilibran las cargas. y la tensión entre las esferas desaparece. 
+
+
+\subsection{Batería}
+
+En una batería hay dos polos de un material conductor, uno positivo  y el otro negativo. Entre ellos hay una tensión
+
+\[U = \frac{E[J] }{Q[C]}\equiv [V]\]]
+
+Si uno acopla un cable entre los polos, un campo eléctrico comienza a conducir los electrones desde el polo negativo al polo positivo. Una vez que la carga disminuye entre los polos, comienzan a pasar cosas. El proceso químico comienza, lleva electrones desde el polo positivo de la batería al polo negativo. Esto implica que la carga en ambos polos se renueva continuamente, y se restituye la diferencia potencial. 
+Las  baterías se pueden pensar como una fuente de tensión, que continua impulsando electrones a través del circuito. De la energía química se obtiene energía eléctrica al mismo tacto que esta se consume. Cuando ya no se pueden producir reacciones químicas, la batería esta agotada. 
+
+\subsection{Corriente eléctrica}
+En el momento en que uno acopla un foquito de luz a una batería, los electrones de conducción comienzan a moverse a través del conductor. Tal movimiento de cargas implica una corriente eléctrica. Debido a que los electrones se mueven de manera permanente en el mismo sentido entonces podemos hablar de una corriente continua. Para conocimiento, también existe la corriente alterna, que es la que tenemos en nuestras casas, pero esto lo dejamos para otro día, ya que implica el movimiento en un sentido y otro de los electrones. Por ahora solo hablaremos la corriente continua.  
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{images/Electricidad/circuito1.png}
+    %\caption{Caption}
+    %\label{fig:placeholder}
+\end{figure}
+
+En la siguiente figura vemos un hilo metálico por el cual fluye una corriente eléctrica. El metal contiene muchos electrones conductores con cargas negativas que se mueven en  un mismo sentido. 
+
+¿que relación existe entre los electrones que se mueven/transportan en un sentido por el hilo metálico y la magnitud de la corriente eléctrica?
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{images/Electricidad/cargas_moviendo2.png}
+    %\caption{Caption}
+    %\label{fig:placeholder}
+\end{figure}
+
+Medimos las cargas $Q$ que pasan a través de una sección del conductor durante un intervalo de tiempo $\Delta t$. La corriente eléctrica $I$ se define como el cociente entre las cargas y el intervalo de tiempo. Podemos pensar en la corriente como la cantidad de carga que pasa por un área de un conductor durante un intervalo de tiempo. 
+
+\[I=\frac{\Delta Q}{\Delta t}\]
+
+esta relación también se puede escribir como
+
+\[I=\frac{Q}{ t}\]
+
+Las unidades SI para la corriente es $1$ ampere [A]. La ecuación nos da la siguiente relación entre las unidades
+
+\[1 A = 1\frac{C}{s}\]
+
+Entonces, 1 A implica que pasó una carga de 1 C (coulomb) en un tiempo de 1s (segundo).
+
+
+\subsection{Medición de la tensión y la corriente}
+
+\textbf{El amperímetro y el voltímetro}
+
+La corriente eléctrica se mide con el amperímetro. Normalmente un mismo instrumento se puede utilizar para medir ambas cosas, la corriente eléctrica y la tensión. Con ayuda de una perilla uno puedo transformar el instrumento de voltímetro a amperímetro o vice versa. A pesar de que pareciera lo mismo existen grandes diferencias entre ambos instrumentos o formas de medir de un mismo instrumento. Ademas se acoplan de manera totalmente distintas en el o los circuitos donde queremos medir una u otra cosa. En la figura \ref{medicion_a_t} a) se mide la corriente que pasa a través de la lampara que se encuentra acoplada a la fuente de tensión. El amperímetro se encuentra acoplado en \textbf{serie} con la lampara, tal que la corriente que se quiere medir también pase por el amperímetro. En la figura \ref{medicion_a_t} b) se mide la tensión sobre la lampara. El voltímetro se encuentra acoplado de manera \textbf{paralela} a la lampara. De esta manera la tensión que afecta a la lampara también afecta, de la misma manera, al voltímetro. Si se tienen dos instrumentos, amperímetro y voltímetro, se pueden acoplar como se ve en la figura \ref{medicion_a_t} c) y de esa manera medir  la tensión y la corriente de manera simultanea. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Electricidad/medir_a_t.png}
+    \caption{}
+    \label{medicion_a_t}
+\end{figure}
+
+\subsection{Energía y efecto}
+
+\textbf{Transformación de la energía en una lampara}
+
+Cuando una lampara se conecta a una fuente de tensión los electrones libres en el filamento son influenciados por las fuerzas eléctricas y comienzan a moverse. Pero estos electrones no se mueven totalmente libres, sino que son frenados permanentemente con los átomos metálicos del filamento tal que su velocidad promedio se mantenga constante. Estos choques de electrones con átomos generan calor en el filamento, y de esta manera se transforma energía eléctrica en energía térmica. 
+
+Si uno conoce la tensión $U$ sobre la lampara y la carga $Q$ que pasa por cada sección del filamento de la lampara uno puede calcular la energía que se transforma de la siguiente manera
+
+\[E=U\cdot Q\]
+
+La corriente eléctrica $I$ que pasa por el filamento de la lampara nos da una expresión para la carga $Q$ que pasa por cada sección del filamento durante un tiempo $t$
+
+\[Q=It\]
+
+En consecuencia la transformación de energía $E$ en la lampara durante el tiempo $t$ se puede expresar como:
+
+\[E=UQ=UIt\]
+
+\textbf{Ecuaciones para la transformación de energía y el efecto}
+
+\[E=UIt\]
+
+\[P=\frac{E}{t}\]
+
+\[P=\frac{E}{t}=\frac{UIt}{t}=UI\]
+
+\[I\frac{P}{U}=\frac{10W}{12V}=0.83 A \]
+
+
+
+
+\vspace{0.5cm}
+\textbf{}
+\vspace{0.5cm}
+
+
+
+
+
+\end{document}
