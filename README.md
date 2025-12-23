@@ -1,6 +1,3 @@
-El token mio es 
-
-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
 
 Cuando uno hace cambios en archivos locales uno puede empujar los cambios
 en el archivo indicado a partir de 
